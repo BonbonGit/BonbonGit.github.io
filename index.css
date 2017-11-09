@@ -66,6 +66,7 @@ ul.ddmod{
 
 /* ce selecteur dis: "lorsque 'moddroper' et survolé avec la souris les élément 'ul.ddmod' ont la propriété 'display:block;'", ce qui a pour effet d'affiché la liste de module cachées jusque la*/
 .moddroper:hover ul.ddmod{
+  position: relative;
 	display:block;
 }
 ul.ddmod li{
