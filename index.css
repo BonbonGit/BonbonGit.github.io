@@ -5,6 +5,7 @@ body{
 	background-color:Maroon;
 }
 div{
+  position:relative; /*For aside absolute position*/
 	width:800px;
 	margin:20px auto;
 	padding:1px 40px;
@@ -12,9 +13,9 @@ div{
 	background-color:white;
 	border-radius: 45px;
 }
-header,article, aside, footer{
+header,article,footer{
 	text-align:center;
-	margin:40px 0;
+	margin:40px 0px;
 	border-top:5px double darkgrey;
 	border-bottom:5px double darkgrey;
 	border-radius:50px;
@@ -25,15 +26,26 @@ nav{
 }
 article{
   display:inline-block;
-	padding:10px 30px;
-	width:500px;
+	padding:10px 20px;
+	width:440px;
+  height:210px;
 	text-align: justify;
-	clear:right;
 }
 aside{
+  position:absolute;
+  text-align:left;
   display:inline-block;
-	padding:10px 30px;
-  width:200px;
+  width:240px;
+  height:220px;
+  right:0;
+	padding:10px 20px;
+  margin:40px 40px 40px 0;
+  border-left:5px double darkgrey;
+	border-right:5px double darkgrey;
+  border-radius:50px;
+}
+footer{
+  margin-top:0;
 }
 ul{
 	list-style:none;
