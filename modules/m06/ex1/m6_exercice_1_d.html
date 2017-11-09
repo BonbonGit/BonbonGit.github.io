@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 6 : Exercice 1 : Nombres al&eacute;atoires</title>
+		<script>
+			//FONCTIONS
+				
+				function genererTableauNombreAlea() {
+				//Cette fonction crée un tableau de 500 nombres
+				//Cette fonction renvoie le tableau créé
+					var tNb = [];
+					var i;
+					for(i = 0;i < 500;i++){
+						tNb.push(Math.ceil(Math.random()*10))
+					}
+					return tNb;
+
+				}
+				
+				function compterNombre(t, x) {
+				//Cette fonction reçoit un tableau de nombres (t) et l'élément (x) à trouver et à compter
+				//Par exemple, x vaut 4 et cette fonction permet de compter combien de fois
+				//le nombre 4 se trouve dans le tableau passé en paramètre.
+				//Cette fonction renvoie le nombre de x comptés dans le tableau.
+					var i = 0;
+					var nbX = 0;
+					
+					for(i in t){
+					
+						if(t[i] == x)
+							nbX++;
+					
+					}
+					
+					return nbX;
+				}
+			
+			
+			//VARIABLES GLOBALES
+				//variable tableau qui enregistrera les nombres générés
+				var t = new Array();
+				
+				//variable tableau qui enregistrera les résultats du comptage des nombres
+				var r = new Array();
+				
+			
+			
+			
+			//PROGRAMME PRINCIPAL
+				t = genererTableauNombreAlea();
+				
+				
+				//Créez une boucle qui permet de compter les nombres de 1 à 10 dans le tableau de nombres
+				//et d'inscrire le résultat dans le tableau r
+				for(var i = 1;i <= 10;i++){
+					r.push(compterNombre(t,i));
+				
+				}
+
+				//Affichez le résultat				
+				alert('Résultats du comptage :' +
+					'\n1 : ' + r[0] +
+					'\n2 : ' + r[1] +
+					'\n3 : ' + r[2] +
+					'\n4 : ' + r[3] +
+					'\n5 : ' + r[4] +
+					'\n6 : ' + r[5] +
+					'\n7 : ' + r[6] +
+					'\n8 : ' + r[7] +
+					'\n9 : ' + r[8] +
+					'\n10 : ' + r[9]);
+
+
+
+	
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

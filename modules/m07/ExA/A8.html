@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 7 A</title>
+		<link rel="stylesheet" href="style_A.css" />
+		
+		<script type="text/javascript">
+		var t0;
+		
+		function resultatAscension(){
+			alert("Bravo! Votre pingouin a réussi son ascension!");
+		}
+		function demarrerChrono(){
+			var laDate = new Date();
+			t0 = laDate.getTime();	
+		}
+		function lectureChrono(){
+			var laDate = new Date();
+			var t1 = (laDate.getTime()-t0)/1000;
+			alert('Il s\'est ecoulé : ' + t1 + 's');
+		}
+		</script>
+	</head>
+	<body>
+		<button onclick="demarrerChrono()">Début (instant t0)</button>
+		<button onclick="lectureChrono()">Lecture du chronomètre</button>
+		<button onclick="resultatAscension()">Afficher le résultat de l'ascension</button>
+		<button onmousedown="resultatAscension()">Afficher le résultat de l'ascension *onmousedown</button>
+		<button onmousemove="resultatAscension()">Afficher le résultat de l'ascension *onmousemove</button>
+		<button onmouseup="resultatAscension()">Afficher le résultat de l'ascension *onmouseup</button>
+		<button ondblclick="resultatAscension()">Afficher le résultat de l'ascension *ondblclick</button>
+	</body>
+</html>

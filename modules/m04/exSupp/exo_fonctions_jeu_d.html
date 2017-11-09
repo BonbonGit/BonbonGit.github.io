@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+	
+		<meta charset="utf-8"/>		
+		<title>exo sur les fonctions: donnée</title>
+		<script type="text/javascript">
+		
+			//déclaration des variables globales:
+			
+			var numeroTour=1;
+			var position=0;
+			
+			// déclaration de la fonction lancerDe(), qui retourne une valeur entière
+			// entre 1 et 6, calculée de manière aléatoire
+			function lancerDe(){
+				return Math.ceil(Math.random()*6);
+			}
+
+			
+			// déclaration de la fonction unTour(), qui gère toutes les opérations
+			// à effectuer en un tour de jeu et affiche la fenêtre alert qui donne
+			// le résultat de ce tour
+			function unTour(){
+				var de1 = lancerDe();
+				var de2 = lancerDe();
+				var sommeDe = 0;
+				
+				if (de1 == 3 || de2 == 3){
+				
+					sommeDe = 2*(de1 + de2);
+					position += sommeDe;
+				}
+				
+				else if (de1 == 4 && de2 == 4){
+					
+					sommeDe = - (de1 + de2)
+					position += sommeDe;
+					
+					if (position < 0){
+						position = 0;
+					}
+					
+					else {
+						position = position;
+					}
+					
+				}
+				
+				else {
+					sommeDe = de1 + de2;
+					position += sommeDe;
+				}
+				
+				alert('Tour n°' + numeroTour + '\nDé 1 : ' + de1 + '\nDé 2 : ' + de2 + '\nVous avancez de ' + sommeDe + ' cases. \nVous êtes maintenant sur la case n°' + position + '.');
+				
+				numeroTour++;
+				
+			}
+
+
+
+			// déclaration de la fonction jeu(), qui gère l'ensemble d'une partie
+			// et affiche la fenêtre donnant le résultat final du jeu
+			function jeu(){
+				unTour();
+				unTour();
+				
+				if (position > 20){}
+	
+				else {
+					unTour();
+				}
+				
+				if (position > 20){
+					alert('Vous avez gagné!');
+				}
+				else {
+					alert('Vous avez perdu!');
+				}
+				
+			}
+			
+
+			// appel de la fonction jeu()
+			jeu();
+
+		
+		
+		</script>
+	</head>
+	<body>
+
+
+
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>initialisation de la balise canvas</title>
+		<script type="text/javascript">
+		//initialisation de la balise canvas
+			var ctx,canvas;
+			var width,height;
+			function initialiser(){ 
+				canvas=document.getElementById('canvasID');
+				ctx=canvas.getContext('2d');
+				width=parseInt(canvas.width);
+				height=parseInt(canvas.height);
+			}
+			
+			function nbAlea(min,max){
+				return Math.floor(Math.random()*(max-min))+min;
+				
+			}
+			function couleurAlea(){
+				var col = '#';
+				var i;
+				for(i = 0; i < 3; i++){
+				 col += nbAlea(0,17).toString(16);
+				}
+				return col;
+			}
+		//fonction de dessin
+			function dessiner(){
+				var x = nbAlea(20,780);
+				var y = nbAlea(0,420);
+				var couleur = couleurAlea();
+				dessinerMaison(x,y,couleur);
+				
+			}
+			
+
+			function dessinerMaison(x,y,couleur){
+				ctx.beginPath();
+				ctx.moveTo(x,y);
+				ctx.lineTo(x-20,y+40);
+				ctx.lineTo(x-20,y+80);
+				ctx.lineTo(x+20,y+80);
+				ctx.lineTo(x+20,y+40);
+				ctx.closePath();
+				
+				if(Math.round(Math.random())){
+					ctx.strokeStyle = couleur;
+					ctx.stroke();
+				} else {
+					ctx.fillStyle = couleur;
+					ctx.fill();
+				}
+				
+			}
+			
+		</script>
+	</head>
+	<!--appel desfonctions d'initialisation et de dessin -->
+	<body onload='initialiser();dessiner()'>
+	<!--<div> contenant la balise <canvas> -->
+		<div>
+		<!--balise <canvas> -->
+			<canvas id='canvasID' width='800' height='500'>
+			</canvas>
+		</div>
+	</body>
+</html>

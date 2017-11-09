@@ -1,0 +1,83 @@
+<! DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Exercice 3</title>
+		<script type="text/javascript">
+		
+		//déclaration des variables
+		var nbCache = 0;
+		var nbPropose = 0;
+		var trouve = false;
+		//générer un nombre aléatoire entre 1 et 20
+		nbCache = Math.ceil(Math.random()*20)
+		
+		//demander à l'utilisateur de proposer un nombre
+		nbPropose = parseInt(prompt('Essayer de deviner le nombre caché (entier entre 1 et 20)'));
+		
+		if (nbPropose < nbCache) 
+			alert('Le nombre caché est plus grand!');
+			
+		else if (nbPropose > nbCache)
+			alert('Le nombre caché est plus petit!');
+			
+		else if (Number.isNaN(nbPropose))
+			alert('Vous n\'avez pas entré un nombre entier. \nVous avez une chance en moins de trouvez le nombre caché.\nDommage pour vous');
+			
+		else{
+			alert('Bravo, vous avez trouvé le nombre caché!');
+			trouve = true;
+		}
+		//fin du test
+		//répéter 3 fois
+		if (trouve == true) {}
+		
+		else{
+			
+			nbPropose = parseInt(prompt('Essayer de deviner le nombre caché (entre 1 et 20)'));
+		
+		
+			if (nbPropose < nbCache) 
+				alert('Le nombre caché est plus grand!');
+			
+			else if (nbPropose > nbCache)
+				alert('Le nombre caché est plus petit!');
+		
+			else if (Number.isNaN(nbPropose))
+				alert('Vous n\'avez pas entré un nombre entier. \nVous avez une chance en moins de trouvez le nombre caché.\nDommage pour vous');
+		
+			else{
+				alert('Bravo, vous avez trouvé le nombre caché!');
+				trouve = true;
+			}
+		}
+		
+		if (trouve == true){}
+		
+		else{
+			
+			nbPropose = parseInt(prompt('Essayer de deviner le nombre caché (entre 1 et 20)'));
+		
+		
+			if (nbPropose < nbCache) 
+				alert('Le nombre caché est plus grand!');
+			
+			else if (nbPropose > nbCache)
+				alert('Le nombre caché est plus petit!');
+		
+			else if (Number.isNaN(nbPropose))
+				alert('Vous n\'avez pas entré un nombre entier. \nVous avez une chance en moins de trouvez le nombre caché.\nDommage pour vous');
+		
+			else{
+				alert('Bravo, vous avez trouvé le nombre caché!');
+				trouve = true;
+			}
+		}
+		</script>
+		
+	</head>
+	
+	<body>
+	
+	</body>
+</html>

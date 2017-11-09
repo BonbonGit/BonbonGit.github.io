@@ -1,0 +1,76 @@
+<! DOCTYPE html> 
+<html lang="fr"> 
+	<head> 
+		<meta charset="utf-8">
+		<title>Exercice 5</title>
+		<script type="text/javascript">
+		
+		//déclaration variables
+		var de1 = 0;
+		var de2 = 0;
+		var de3 = 0;
+		var de4 = 0;
+		var de5 = 0;
+		
+		//attribution d'un nombre à chaque dé
+		de1 = Math.ceil(Math.random() * 6);
+		de2 = Math.ceil(Math.random() * 6);
+		de3 = Math.ceil(Math.random() * 6);
+		de4 = Math.ceil(Math.random() * 6);
+		de5 = Math.ceil(Math.random() * 6);
+		
+		//afficher les valeurs des dés
+		alert(' Dé 1 : ' + de1 + '\n Dé 2 : ' + de2 + '\n Dé 3 : ' + de3 + '\n Dé 4 : ' + de4+ '\n Dé 5 : ' + de5 + '\n Choisissez les dés que vous voulez garder ! (Tour 1)');
+		
+		///demander les dés à garder pour le 2ème tour
+		if (confirm('Appuyez sur OK si vous voulez garder le dé 1 !\n Valeur du dé 1 : ' + de1)){}
+		else
+			de1 = Math.ceil(Math.random() * 6);
+			
+		if (confirm('Appuyez sur OK si vous voulez garder le dé 2 !\n Valeur du dé 2 : ' + de2)){}
+		else
+			de2 = Math.ceil(Math.random() * 6);
+			
+		if (confirm('Appuyez sur OK si vous voulez garder le dé 3 !\n Valeur du dé 3 : ' + de3)){}	
+		else
+			de3 = Math.ceil(Math.random() * 6);	
+		if (confirm('Appuyez sur OK si vous voulez garder le dé 4 !\n Valeur du dé 4 : ' + de4)){}	
+		else
+			de4 = Math.ceil(Math.random() * 6);
+		if (confirm('Appuyez sur OK si vous voulez garder le dé 5 !\n Valeur du dé 5 : ' + de5)){}
+		else
+			de5 = Math.ceil(Math.random() * 6);
+			
+		//afficher les valuers des dés au tour 2
+		alert(' Dé 1 : ' + de1 + '\n Dé 2 : ' + de2 + '\n Dé 3 : ' + de3 + '\n Dé 4 : ' + de4+ '\n Dé 5 : ' + de5 + '\n Choisissez les dés que vous voulez garder ! (Tour 2)');
+		
+		//demander les dés à garder pour le 3ème tour
+		if (confirm('Appuyez sur OK si vous voulez garder le dé 1 !\n Valeur du dé 1 : ' + de1)){}
+		else
+			de1 = Math.ceil(Math.random() * 6);
+			
+		if (confirm('Appuyez sur OK si vous voulez garder le dé 2 !\n Valeur du dé 2 : ' + de2)){}	
+		else
+			de2 = Math.ceil(Math.random() * 6);	
+		if (confirm('Appuyez sur OK si vous voulez garder le dé 3 !\n Valeur du dé 3 : ' + de3)){}	
+		else
+			de3 = Math.ceil(Math.random() * 6);
+		if (confirm('Appuyez sur OK si vous voulez garder le dé 4 !\n Valeur du dé 4 : ' + de4)){}	
+		else
+			de4 = Math.ceil(Math.random() * 6);	
+		if (confirm('Appuyez sur OK si vous voulez garder le dé 5 !\n Valeur du dé 5 : ' + de5)){}	
+		else
+			de5 = Math.ceil(Math.random() * 6);
+			
+		//afficher les valeurs finales des dés 
+		alert(' Dé 1 : ' + de1 + '\n Dé 2 : ' + de2 + '\n Dé 3 : ' + de3 + '\n Dé 4 : ' + de4+ '\n Dé 5 : ' + de5 + '\nC\'était votre dernier tour!');
+		</script> 
+	</head> 
+	<body>
+	</body>
+</html>
+
+
+
+
+

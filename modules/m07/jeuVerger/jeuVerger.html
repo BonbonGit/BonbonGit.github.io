@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8"/>
+        <title>Jeu du verger</title>
+        
+        <link rel="stylesheet" type="text/css" href="style.css"/>
+        <script type="text/javascript" src="fcts_utilitaires.js"></script>
+        <script type="text/javascript">
+        	//variable globales
+        		var tFruits = ['cerise','poire','pomme','pruneau']
+        		var tPanier = new Array(4);
+        		var faceDe = -1;
+        		var nbChoixFruit = 0;
+        		var etatCorbeau = 0;
+        	
+        	//fonctions utilitaires
+        		function nbAlea(){
+        			return Math.floor(Math.random()*6);
+        		}
+        		function msg(txt){
+        			$("msgID").innerHTML = txt;
+        		}
+        	//fonctions de jeu
+        	
+				function lancerDe(){
+					$('btn').disabled = true;
+					msg('');
+					do{
+						faceDe = nbAlea();
+					}while(!validerFaceDe(faceDe))
+					if(faceDe < 4){
+						nbChoixFruit = 1;
+						$('idDe').src = 'images/' + tFruits[faceDe] + '.jpg';
+						msg('Vous pouvez sélectionner un(e) ' + tFruits[faceDe] + '.');
+					
+					} else if(faceDe == 1){
+						nbChoixFruit = 2;
+						$('idDe').src = 'images/panier.jpg';
+						msg('Vous pouvez sélectionner deux fruits sur n\'importe quel arbre.');
+					
+					} else if(faceDe == 5){
+						etatCorbeau++;
+						$('idDe').src = 'images/corbeau.jpg';
+						$('c' + etatCorbeau).src = 'images/c' + etatCorbeau + '.jpg';
+						alert('Le corbeau déjà remplis ' + etatCorbeau + ' pièces du puzzle !');
+						faceDe = -1;
+						verifierEtatJeu();
+					}
+					
+					
+				}
+				function validerFaceDe(faceChoisie){
+					return (faceChoisie > 3 || tPanier[faceChoisie] < 10);
+				}
+        	
+        	
+				function choisirFruit(id){
+					var fruitChoisi = id.slice(0, id.length-1);
+					if(validerChoixFruit(fruitChoisi)){
+						$(id).src = 'images/' + fruitChoisi + '_nb.jpg';
+						$(id).onclick = '';
+						nbChoixFruit--;
+						ajouterFruitPanier(fruitChoisi);
+						if(nbChoixFruit == 0 || sommePanier() == 40){
+							faceDe = -1;
+							verifierEtatJeu();
+						}
+					}
+					
+				}
+				function validerChoixFruit(fruit){
+					if(faceDe == 4){
+						return true;
+					
+					}
+					else{
+						var i = 0;
+						var trouve = false;
+						while(!trouve && i < 4){
+							if(fruit == tFruits[i]){
+								if(i == faceDe){
+									if(nbChoixFruit > 0){
+										return true;
+									}
+								}
+							}
+							i++;
+						}
+						if(!trouve) return false;
+					}
+				
+				}
+				function ajouterFruitPanier(fruit){
+					switch(fruit){
+						case 'cerise' :
+							tPanier[0]++;
+							break;
+						case 'poire' :
+							tPanier[1]++;
+							break;
+						case 'pomme' :
+							tPanier[2]++;
+							break;
+						case 'pruneau' :
+							tPanier[3]++;
+							break;
+					}
+					
+					mettreAjourPanier();
+				}
+				function mettreAjourPanier(){
+					$('nb_cerises').innerHTML = tPanier[0];
+					$('nb_poires').innerHTML = tPanier[1];
+					$('nb_pommes').innerHTML = tPanier[2];
+					$('nb_pruneaux').innerHTML = tPanier[3];
+				}
+			
+				function verifierEtatJeu(){
+					if(etatCorbeau == 9){
+						msg('Vous avez perdu !')
+					} else if(sommePanier() == 40){
+						msg('Vous avez gagné !')
+					} else {
+						msg('Tour suivant !')
+						$("btn").disabled = false;
+					}
+					
+				}
+				function sommePanier(){
+					var i;
+					var s = 0;
+					for(i = 0; i < tPanier.length; i++){
+						s += tPanier[i];
+					}
+					return s;
+				}
+        	
+        	//fonctions d'initialisation
+        	
+				function init(){
+					initFruits();
+					initCorbeau();
+					initPanier();
+				}
+				function initFruits(){
+					var i;
+					for(i = 0; i< tFruits.length; i++){
+						$(tFruits[i]).innerHTML = initFruit(tFruits[i]);
+					}
+				}
+				function initFruit(fruit){
+					var i;
+					var j;
+					var id = 0;
+					var txt = '';
+					for(j = 4; j > 0; j--){
+						for(i = 0; i<j; i++){
+							txt += '<img alt="" id="'+ fruit + id +'" src="images/' + fruit + '.jpg" onclick="choisirFruit(\'' + 
+							fruit + id + '\');">';
+							id++;
+						}
+						txt += '<br/>' 
+					}
+					return txt;
+				}
+				function initCorbeau(){
+					var txt = '';
+					var i;
+					for(i = 1; i<=9; i++){
+						txt += '<img alt="" id="c' + i + '" src="images/c' + i + '_nb.jpg">';
+						if(i%3 == 0) txt += '<br/>';
+					}
+					$('corbeau').innerHTML = txt;
+				}
+				function initPanier(){
+					var i;
+					for(i = 0; i < tPanier.length; i++){
+						tPanier[i] = 0;
+					}
+				}
+        </script>
+    </head>
+    <body onload="init()"> 
+    	<section id="page">
+			<header>
+				<h1>Le jeu du Corbeau</h1> 
+			</header>
+			<section id="jeu">
+				<table>
+					<tr>
+						<td>
+							<h2> Cerises </h2>
+							<div id="cerise">
+							</div>
+						</td>
+						<td>
+							<h2> Poires </h2>
+							<div id="poire">
+							</div>
+						</td>
+						<td>
+							<h2> Pommes </h2>
+							<div id="pomme">
+							</div>
+						</td>
+						<td>
+							<h2> Pruneaux </h2>
+							<div id="pruneau">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h2> Panier </h2>
+							<table class="panierT">
+								<tr>
+									<td class="panier">
+										<span id="nb_cerises">0</span>
+									</td>
+									<td class="panier">
+										<img src="images/cerise.jpg" />
+									</td>
+								</tr>
+								<tr>
+									<td class="panier">
+										<span id="nb_poires">0</span>
+									</td>
+									<td class="panier">
+										<img src="images/poire.jpg" />
+									</td>
+								</tr>
+								<tr>
+									<td class="panier">
+										<span id="nb_pommes">0</span>
+									</td>
+									<td class="panier">
+										<img src="images/pomme.jpg" />
+									</td>
+								</tr>
+								<tr>
+									<td class="panier">
+										<span id="nb_pruneaux">0</span>
+									</td>
+									<td class="panier">
+										<img src="images/pruneau.jpg" />
+									</td>
+								</tr>
+							</table>
+						</td>
+						<td id="de">
+							<h2> Dé </h2>
+							<img id="idDe" src="images/panier.jpg"/><br/>
+							<button id="btn" onclick="lancerDe()"> Lancer le dé </button>
+							<p id="msgID"> Pour démarrer le jeu, cliquez sur le bouton ! </p>
+						</td>
+						<td colspan="2">
+							<h2> Corbeau </h2>
+							<div id="corbeau">
+								
+							</div>
+						</td>
+					</tr>
+				</table>
+			</section>
+			<footer >
+				<h2>CC c moa</h2> 
+			</footer>
+		</section>
+    </body>
+</html>

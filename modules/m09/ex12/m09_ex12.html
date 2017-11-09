@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Exercice 12</title>
+		<script type="text/javascript">
+		//initialisation de la balise canvas
+			var ctx,canvas;
+			var width,height;
+			var t;
+			var etat = 1;
+			
+			function $(id){
+				return document.getElementById(id);
+			}
+			function initialiser(){ 
+				canvas=document.getElementById('canvasID');
+				ctx=canvas.getContext('2d');
+				width=parseInt(canvas.width);
+				height=parseInt(canvas.height);
+				
+			}
+			
+			function nbAlea(min,max){
+				return Math.floor(Math.random()*(max-min))+min;
+				
+			}
+			function couleurAlea(){
+				var col = '#';
+				var i;
+				for(i = 0; i < 6; i++){
+				 col += nbAlea(0,16).toString(16);
+				}
+				
+				return col;
+			}
+			function vertAlea(){
+				var col = '#00';
+				var i;
+				for(i = 0; i < 2; i++){
+				 col += nbAlea(0,16).toString(16);
+				}
+				col += '00';
+				return col;
+			}
+			
+			
+		//fonction de dessin
+			function changerEtat(){
+				switch(etat){
+					case 0:
+						clearInterval(t);
+						$("btn").value = "Nouveau dessin";
+						etat = 1;
+						break;
+					case 1:
+						ctx.clearRect(0,0,480,320);
+						t = setInterval(dessiner,500);
+						$("btn").value = "Stop";
+						etat = 0;
+						break;
+				}
+			}
+
+			function dessiner(){
+				ctx.save();
+				var r = nbAlea(1,100);
+				var x = nbAlea(r,width-r);
+				var y = nbAlea(r,height-r);
+				var color = vertAlea();
+					
+				ctx.translate(x,y);
+				dessinerCercle(r);
+					
+				ctx.restore();
+				
+				
+			}
+			
+			function dessinerCercle(r){
+				ctx.beginPath();
+				ctx.arc(0,0,r,0,2*Math.PI,true);
+				ctx.closePath();
+				ctx.strokeStyle = vertAlea();
+				ctx.stroke();
+				if(Math.round(Math.random()) == 1){
+					ctx.fillStyle = vertAlea();
+					ctx.fill();
+				}
+					
+			}
+		</script>
+	</head>
+	<!--appel desfonctions d'initialisation et de dessin -->
+	<body onload='initialiser();'>
+	<!--<div> contenant la balise <canvas> -->
+		<div>
+		<!--balise <canvas> -->
+			<canvas id='canvasID' width='480' height='320'>
+			</canvas>
+		</div>
+		<input id="btn" value="Dessin" type="button" onclick="changerEtat();"/>
+	</body>
+</html>

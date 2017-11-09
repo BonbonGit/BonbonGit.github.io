@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Pacman</title>
+		<script type="text/javascript" src="m09_PacObjs.js"></script>
+		<script type="text/javascript">
+		//initialisation de la balise canvas
+			var ctx,canvas;
+			var width,height;
+			var t;
+			var tileDim = 40;
+			
+			//FCT utilitaires
+			function $(id){
+				return document.getElementById(id);
+			}
+			function degToRad(deg){
+				return deg*2*Math.PI/360;
+			}
+			function effacer(){
+				ctx.clearRect(0,0,width,height);
+			
+			}
+			function keyHandler(){
+				document.body.addEventListener('keydown', function(e) {
+					
+					switch(e.keyCode){
+						case 37:
+							pacman.direction = 2;
+							pacman.mvt = true;
+							break;
+						case 38:
+							pacman.direction = 3;
+							pacman.mvt = true;
+							break;
+						case 39:
+							pacman.direction = 0;
+							pacman.mvt = true;
+							break;
+						case 40:
+							pacman.direction = 1;
+							pacman.mvt = true;
+							break;
+					}
+				});
+				document.body.addEventListener('keyup', function(e) {
+					var direction = -1;
+					switch(e.keyCode){
+						case 37:
+							direction = 2;
+							break;
+						case 38:
+							direction = 3;
+							break;
+						case 39:
+							direction = 0;
+							break;
+						case 40:
+							direction = 1;
+							break;
+					}
+					if(direction == pacman.direction ){
+						pacman.mvt = false;
+					}
+					
+				});
+			}
+			// FCT d'initilisation
+			function initialiser(){ 
+				canvas=document.getElementById('canvasID');
+				ctx=canvas.getContext('2d');
+				width=parseInt(canvas.width);
+				height=parseInt(canvas.height);
+				bg=document.getElementById('bgCanvasID');
+				bgc=bg.getContext('2d');
+				
+				
+			}
+			function start(){
+				theMap.fillMap();
+				theMap.drawMap();
+				t = setInterval(dessiner,50);
+				
+			}
+			
+		//fonction de dessin
+			
+			
+			function dessiner(){
+				effacer();
+				
+				ctx.save();
+					pacman.dessiner();
+				ctx.restore();
+				
+				ctx.save();
+					fantome.dessiner();
+				ctx.restore();
+				
+				pacman.pertPac();
+				
+				pacman.majPos();
+				fantome.majPos();
+				theMap.majPG();
+			
+			}
+			
+			
+			
+		</script>
+	</head>
+	<!--appel desfonctions d'initialisation et de dessin -->
+	<body onload='initialiser();start();keyHandler()'>
+	<!--<div> contenant la balise <canvas> -->
+		<div>
+		<!--balise <canvas> -->
+			<canvas style="position:fixed" id='bgCanvasID' width='1000' height='600'>
+			</canvas>
+			<canvas style="position:fixed" id='canvasID' width='1000' height='600'>
+			</canvas>
+			
+			
+		</div>
+		<p id="p"></p>
+	</body>
+</html>

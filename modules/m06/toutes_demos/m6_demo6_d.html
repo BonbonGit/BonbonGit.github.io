@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 6 Demo 6 : Calcul de la moyenne</title>
+		<script>
+			
+			//FONCTIONS
+				function demanderNomEleve() {
+					var n = '';
+					while (!n) {
+						n = prompt('Saisissez le nom de l\'élève :');
+					}	
+					return n;
+				}
+				
+				function demanderNotes(t) {
+				//Cette fonction reçoit un tableau des branches en entrée (t)
+				//Cette fonction retourne un tableau de notes.
+				//Pour obtenir les notes de l'utilisateur, cette fonction lui demande
+				//pour chaque branche du tableau t la note à inscrire.
+				//Une fois toute les notes saisies, renvoyer le tableau de note !
+				//Attention à créer  un tableau en local...
+					var i;
+					var tNotes = [];
+					for(i = 0;i < t.length; i++){
+						tNotes.push(parseInt(prompt('Quelle est votre note dans la branche ' + t[i] + '?')))
+				
+					} 
+					return tNotes;
+
+				}
+				
+				
+			
+				function calculerMoyenne(t){
+				//Cette fonction reçoit un tableau de note en entrée (t)
+				//Cette fonction renvoie la moyenne des notes qui se trouvent dans le tableau
+					var i;
+					var totNotes = 0;
+					for(i = 0;i < t.length; i++){
+						totNotes += t[i];
+				
+					} 
+					return totNotes/tBranches.length;
+
+
+
+
+				}
+				
+				function afficherInformations(e,tB,tN,m) {
+				//Cette fonction reçoit en entrée : 
+				//- le nom de l'élève (e)
+				//- le tableau des branches (tB)
+				//- le tableau des notes (tN)
+				//- la moyenne calculée (m)
+				//Cette fonction préparer l'affichage du message et l'affiche...
+					var i;
+					var msg = 'Situation de ' + e + ':';
+					for(i = 0;i < tB.length; i++){
+						msg += '\n' + tB[i] + ' : ' + tN[i];
+					}
+					msg += '\nMoyenne : ' + m
+					alert(msg);
+
+				
+				}
+			
+			
+			//VARIABLES GLOBALES
+				var nomEleve='';
+				var branchesListe = 'FRANCAIS,ALLEMAND,ANGLAIS,MATHEMATIQUE,SCIENCES HUMAINES,GESTION FINANCIERE,ECONOMIE ET DROIT,INFORMATIQUE DE GESTION,BUREAUTIQUE';
+				var tBranches = branchesListe.split(',');
+				var tNotes = new Array();
+				var moyenne = 0;
+			
+			
+			//PROGRAMME PRINCIPAL
+				//demander le nom de l'élève
+				nomEleve = demanderNomEleve();
+			
+				//demander les notes dans l'ordre des branches...
+				//et les insérer dans le tableau tNotes.
+				tNotes = demanderNotes(tBranches);
+				
+				//calculer la moyenne
+				moyenne = calculerMoyenne(tNotes);
+				
+				//afficher les notes des branches et la moyenne
+				afficherInformations(nomEleve, tBranches, tNotes, moyenne);
+				
+			
+			
+		
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

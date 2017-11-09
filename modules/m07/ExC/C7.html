@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 7 C</title>
+		<link rel="stylesheet" href="style_A.css" />
+		<script type="text/javascript" src="fcts_utilitaires.js"></script>
+		<script type="text/javascript">
+		function premierePartie(){
+			
+			var prenom = $("prenom").value;
+			var nom = $("nom").value;
+			if(prenom == '' || nom == ''){
+				alert("Erreur: vous n'avez pas complété correctement les champs!");
+			} else {
+				remplirHTML("prenom_res", prenom + ' ' + nom + ", vous pouvez commencer la partie.");
+			}
+		}
+		function init(){
+			var prenom = ['Adrien','Alois','Edouard','Natalia'];
+			var nom = ['Le Van','Mattei','Subri','Feliks'];
+			$("prenom").value = prenom[Math.floor(Math.random()*4)];
+			$("nom").value = nom[Math.floor(Math.random()*4)];
+		}
+		</script>
+	</head>
+	<body>
+		<div id="prenom_res">Entrez votre prénom pour commencer la première partie: </div>
+		<input id="prenom" maxlength="30" value="Romain" onkeypress="if(event.keyCode==13)premierePartie()";/>
+		<input id="nom" maxlength="30" value="Küenzi" onkeypress="if(event.keyCode==13)premierePartie()";/>
+		<button onclick="premierePartie()">Entrer le prénom</button>
+		<button onclick="init()">Initialiser</button>
+	</body>
+</html>

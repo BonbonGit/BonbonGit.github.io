@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 7 G</title>
+		
+		<script type="text/javascript" src="fcts_utilitaires.js"></script>
+		<script type="text/javascript">
+			function init(){
+				for(i = 0; i < 7; i++){
+					document.getElementsByName("radio_noms")[i].onclick = controleNom_radio;
+				}
+				for(i = 0; i < 7; i++){
+					document.getElementsByName("checkBox_noms")[i].onclick = controleNom_checkbox;
+				}
+			}
+			var controleNom_radio = function(){
+				var i;
+				var msg;
+				for(i = 0; i < 7; i++){
+					if(document.getElementsByName("radio_noms")[i].checked){
+						msg = 'La montagne sélectionnée est ' + document.getElementsByName("radio_noms")[i].value;
+						break;
+					}
+					msg = "Aucune montagne n'est sélectionnée.";
+				}
+				
+				$("nom_radio").innerHTML = msg;
+			}
+			var controleNom_checkbox = function(){
+				var i;
+				var nbSelec =  0;
+				var choix;
+				var msg = 'Les montagnes sélectionnées sont';
+				for(i = 0; i < 7; i++){
+					if(document.getElementsByName("checkBox_noms")[i].checked){
+						choix = document.getElementsByName("checkBox_noms")[i].value
+						msg += ', '  + choix;
+						nbSelec++;
+					}
+				}
+				switch(nbSelec){
+					case 0:
+						msg = "Aucune montagne n'est sélectionnée.";
+						break;
+					case 1:
+						msg = 'La montagne sélectionnée est ' + choix + '.';
+						break;
+					default:
+						msg += '.';
+						break;
+				}
+				$("nom_checkBox").innerHTML = msg;
+			
+			}
+		</script>
+	</head>
+	<body onload="init()">
+		<input type="radio" name="radio_noms" value="l'Eiger"/>l'Eiger <br/>
+		<input type="radio"	name="radio_noms" value="la Dent Blanche"/>la Dent Blanche<br/>
+		<input type="radio"	name="radio_noms" value="le	Chasseral"/>le Chasseral <br/>
+		<input type="radio" name="radio_noms" value="le	Cochet"/>le Cochet <br/>
+		<input type="radio" name="radio_noms" value="le	Zinalrothorn"/>le Zinalrothorn <br/>
+		<input type="radio" name="radio_noms" value="la	Dent d'Hérens"/>la Dent d'Hérens <br/>
+		<input type="radio"	name="radio_noms" value="le	Chasseron"/>le Chasseron<br/>
+		<button onclick="controleNom_radio" >Contrôler le nom de la montagne (boutons radios)</button>
+		<div id="nom_radio"></div>
+		<input type="checkbox"	name="checkBox_noms" value="l'Eiger"/>l'Eiger <br/>
+		<input type="checkbox"	name="checkBox_noms" value="la Dent Blanche"/>la Dent Blanche<br/>
+		<input type="checkbox"	name="checkBox_noms" value="le	Chasseral"/>le Chasseral <br/>
+		<input type="checkbox"	name="checkBox_noms" value="le	Cochet"/>le Cochet <br/>
+		<input type="checkbox"	name="checkBox_noms" value="le	Zinalrothorn"/>le Zinalrothorn <br/>
+		<input type="checkbox"	name="checkBox_noms" value="la	Dent d'Hérens"/>la Dent d'Hérens <br/>
+		<input type="checkbox"	name="checkBox_noms" value="le	Chasseron"/>le Chasseron<br/>
+		<button onclick="controleNom_checkbox()" >Contrôler le nom de la montagne (checkbox)</button>
+		<div id="nom_checkBox"></div>
+
+	</body>
+</html>

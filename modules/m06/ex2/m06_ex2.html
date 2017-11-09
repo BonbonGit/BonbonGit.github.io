@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 6 : Exercice 2 : Nombres al&eacute;atoires</title>
+		<script>
+			"use strict";
+			var msg = '';
+			var lvlCrypt = 0;
+			
+			//Fonction de cryptage
+			function cryptage(msg,nivCrypt){
+				var tAlphabet = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z',' '];
+				var i;
+				var tMsg = msg.split('');
+				var j = 0;
+				var trouve = false;
+				msg = ''
+				
+				for(i = 0;i < tMsg.length; i++){
+					j = 0;
+					trouve = false;
+					do{
+						if(tMsg[i] == tAlphabet[j]){
+							trouve = true;
+							tMsg[i] = tAlphabet[(j + nivCrypt)%tAlphabet.length];
+						}
+						
+						j++;
+					}while(!trouve && j < tAlphabet.length)//Stop à la fin du tableau de lettre par sécurité
+					
+					msg += tMsg[i];
+				}
+				return msg;
+			}
+			
+			//demande du message et du nom
+			do{
+				msg = prompt('Entrez un message Ã  crypter. (en majuscule svp)');
+			}while(!isNaN(msg))
+			do{
+				lvlCrypt = parseInt(prompt('Entrez le niveau de cryptage. (Entre 1 et 10)'));
+			}while(isNaN(lvlCrypt) && lvlCrypt > 10 && lvlCrypt < 1)
+			
+			//cryptage
+			msg = cryptage(msg,lvlCrypt);
+			
+			//réponse
+			alert('Le message cryptÃ© est : \n\n' + msg);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

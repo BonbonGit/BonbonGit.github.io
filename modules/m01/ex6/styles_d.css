@@ -1,0 +1,78 @@
+/* feuille de style pour l'exercice n°6 avec les nouvelles balises HTML5 */
+
+*{
+	font-family:Verdana;
+}
+body{
+	background-color:lightGrey;
+}
+div{
+	margin-left:auto;
+	margin-right:auto;
+	border:1px solid black;
+	background-color:white;
+	width:900px;
+}
+header{
+	margin:5px auto 5px;
+	color:lightBlue;
+	text-align:right;
+	width:98%;
+}
+img{
+	float:left;
+	
+}
+nav{
+	clear:left;
+	text-align:right;
+	margin:80px 15px 40px;
+}
+aside{
+	margin-right:50px;
+	float:right;
+	vertical-align:top;
+	width:250px;
+}
+section{
+	width:500px;
+	margin-top:50px;
+	padding:10px;
+}
+article{
+	background-color:lightyellow;
+	border:1px solid lightgrey;
+	text-align:justify;
+	color:grey;
+	padding:10px;
+	margin:5px;
+}
+footer{
+	margin:5px;
+	font-size:0.7em;
+}
+p{
+	text-align:inherit;
+	color:inherit;
+}
+h1{
+	color:blue;
+	font-size:1.25em;
+	font-weight:normal;
+	text-align:left;
+	margin:0px;
+}
+h6{
+	font-size:0.6em;
+	font-weight:none;
+}
+.hBarre{
+	font-size;1.25em;
+}
+a{
+	color:green;
+	text-decoration:none;
+}
+a:hover, a:visited{
+	color:red;
+}

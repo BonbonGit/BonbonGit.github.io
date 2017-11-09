@@ -1,0 +1,79 @@
+<! DOCTYPE html> 
+<html lang="fr"> 
+	<head> 
+		<meta charset="utf-8">
+		<title>Exercice 2</title>
+		<script type="text/javascript">
+		
+		//déclaration variables
+		var de1 = 0;
+		var de2 = 0;
+		var de3 = 0;
+		var de4 = 0;
+		var de5 = 0;
+		var numDe = 1;
+		var nbTour = 1;
+		
+		//Fonction : lancer un dé à 6 faces
+		function lanceDe(){
+			return Math.ceil(Math.random() * 6);
+		}
+		
+		//Fonction : donner les premières valeurs aux dés
+		function initialiserJeu(){
+			while(numDe <= 5){
+				eval('de' + numDe + ' = lanceDe()');
+				numDe++;
+			}
+			numDe = 1;
+		}
+		//Fonction : garder un dé ou non
+		function garder(valDe){
+			
+			if (!confirm('Appuyez sur OK si vous voulez garder le dé ' + numDe + '!\n Valeur du dé ' + numDe + ' : ' + valDe)){
+				valDe = lanceDe();
+			}
+			
+			return valDe;
+		}
+		
+		//Function : processus d'un tour de jeu
+		function tour(){
+			
+			
+			if (nbTour != 3){
+			
+				alert('Tour ' + nbTour + '\nDé 1 : ' + de1 + '\nDé 2 : ' + de2 + '\nDé 3 : ' + de3 + '\nDé 4 : ' + de4+ '\nDé 5 : ' + de5 + '\n\nChoisissez les dés que vous voulez garder !');
+				while(numDe <= 5){
+					eval('de' + numDe + ' = garder(de' + numDe + ')');
+					numDe++;
+				}
+				numDe = 1;
+			}
+			else{			
+				alert('Tour ' + nbTour + '\nDé 1 : ' + de1 + '\nDé 2 : ' + de2 + '\nDé 3 : ' + de3 + '\nDé 4 : ' + de4+ '\nDé 5 : ' + de5 + '\n\nC\'était le dernier tour!');
+			}
+			
+		}
+		
+		//Fonction : faire trois tour de jeu => jeu entier
+		function jeu(){
+			initialiserJeu();
+			while(nbTour<=3){
+				tour();
+				nbTour++;
+			}
+		}
+		
+		jeu();
+		
+		</script> 
+	</head> 
+	<body>
+	</body>
+</html>
+
+
+
+
+

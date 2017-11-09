@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 6 Demo 3</title>
+		<script type="text/javascript">
+		
+				//FONCTIONS		
+				
+				//fonction de test de l'indice choisi par l'utilisateur
+				function testerIndice(longeurTableau,indiceChoisi) {
+					//retourne vrai si l'indice est un nombre et qu'il est compris entre les bornes 0 et longueur du tableau
+					return (i >= 0 && i < tFruits.length);
+
+				}	
+		
+		
+				//DECLARATION VARIABLES	
+				
+				//déclaration du tableau tFruits
+				var tFruits = new Array('Pomme','Orange','Poire','Mandarine','Kiwi','Banane');
+				
+				//autres variables
+				var i=0; //indice choisi par l'utilisateur
+			
+			
+				//PROGRAMME
+				
+				//1. Demander à l'utilisateur de saisir un indice entre 0 et la longueur du tableau tFruits
+				i = parseInt(prompt('Entrez le numéro de la case du tableau à la quelle vous voulez accéder (entre 0 et la longueur du tableau)'));
+
+				
+				//2. Vérifiez si l'indice est un nombre et si il est bien compris entre les bornes 
+				// zéro et longueur du tableau (utilisez la fonction testerIndice().
+				//Si le test est concluant, afficher l'élément du tableau correspondant à l'indice saisi.
+				//Sinon affichez un message d'erreur...
+				if(testerIndice(tFruits.length,i))
+					alert(tFruits[i]);
+				else
+					alert('Erreur');
+
+
+
+
+	
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

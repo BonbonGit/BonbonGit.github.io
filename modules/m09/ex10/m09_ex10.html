@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Exercice 9</title>
+		<script type="text/javascript">
+		//initialisation de la balise canvas
+			var ctx,canvas;
+			var width,height;
+			var t;
+			var pale=30;
+			var angle = 0;
+			var x = 0;
+			var y = 0;
+			
+			function initialiser(){ 
+				canvas=document.getElementById('canvasID');
+				ctx=canvas.getContext('2d');
+				width=parseInt(canvas.width);
+				height=parseInt(canvas.height);
+			}
+			
+			function nbAlea(min,max){
+				return Math.floor(Math.random()*(max-min))+min;
+				
+			}
+			function couleurAlea(){
+				var col = '#';
+				var i;
+				for(i = 0; i < 6; i++){
+				 col += nbAlea(0,16).toString(16);
+				}
+				
+				return col;
+			}
+		//fonction de dessin
+			function dessiner(){
+				ctx.clearRect(0,0,800,500);
+				ctx.save();
+				
+				ctx.translate(x,y);
+				dessinerMaison();
+				ctx.rotate(angle);
+				dessinerGirouette();
+				
+				ctx.restore();
+				angle += 0.05;
+				x += 2;
+				y += 1;
+				t = setTimeout(dessiner,50);
+				
+			}
+			
+			function dessinerGirouette(){
+				ctx.beginPath();
+				ctx.moveTo(-(pale/2),-pale);
+				ctx.lineTo((pale/2),pale);
+				ctx.lineTo(-(pale/2),pale);
+				ctx.lineTo((pale/2),-pale);
+				ctx.lineTo(-(pale/2),-pale);
+				ctx.moveTo(-pale,-(pale/2));
+				ctx.lineTo(pale,(pale/2));
+				ctx.lineTo(pale,-(pale/2));
+				ctx.lineTo(-pale,(pale/2));
+				ctx.closePath();
+				ctx.fillStyle='yellow';
+				ctx.fill();
+				ctx.strokeStyle='orange';
+				ctx.stroke();
+			}
+			function dessinerMaison(){
+				ctx.beginPath();
+				ctx.moveTo(0,0);
+				ctx.lineTo(-20,40);
+				ctx.lineTo(-20,80);
+				ctx.lineTo(20,80);
+				ctx.lineTo(20,40);
+				ctx.closePath();
+				ctx.fillStyle = 'green';
+				ctx.fill();
+				
+			}
+		</script>
+	</head>
+	<!--appel desfonctions d'initialisation et de dessin -->
+	<body onload='initialiser();dessiner()'>
+	<!--<div> contenant la balise <canvas> -->
+		<div>
+		<!--balise <canvas> -->
+			<canvas id='canvasID' width='800' height='500'>
+			</canvas>
+		</div>
+	</body>
+</html>

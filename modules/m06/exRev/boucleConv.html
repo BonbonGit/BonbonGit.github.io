@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>exercice 2 du TE 3 du 7 décembre 2012</title>
+		<script type="text/javascript">
+		
+			// nombre de points: 8 pts
+			
+			//Réécrivez le code ci-dessous en remplaçant les boucles for par des
+			//boucles while; effectuez toutes les modifications nécessaires pour
+			//que les résultats obtenus dans les deux cas (cas impliquant les 
+			//boucles for et cas impliquant les boucles while) soient 
+			//équivalents.
+			
+			// VEILLEZ A INDENTER VOTRE CODE DE MANIERE CORRECTE!!!
+			
+
+			function boucleF(){
+				var bool=true;
+				var tNombres=[30,12,3,45,6,76,34,21,34,78,251,21,9,0,34,56,7,89,3];
+				var txt='';
+				
+				for (var i=1 ; i < tNombres.length ; i++){
+				
+					for (var j=10 ; j > i ; j-=2){
+						
+						bool=((i*j*tNombres[j])%3==0);
+						txt += bool+'\n';
+					
+					}
+					
+					i++;
+					
+				}
+				alert(txt);
+			}
+			function boucleW(){
+				var bool=true;
+				var tNombres=[30,12,3,45,6,76,34,21,34,78,251,21,9,0,34,56,7,89,3];
+				var txt='';
+				var i=1;
+				var j=10;
+				while ( i < tNombres.length ){
+					
+					j = 10;
+					while ( j > i ){
+						
+						bool=((i*j*tNombres[j])%3==0);
+						txt += bool+'\n';
+						
+						j-=2
+					
+					}
+					
+					i+=2;	
+				}
+				alert(txt);
+			}
+			boucleF();
+			boucleW();
+				
+		</script>
+	</head>
+	<body>
+
+
+
+	</body>
+</html>
+
+
+
+

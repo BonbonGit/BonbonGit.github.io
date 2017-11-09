@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+        "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>exercice sur l'instruction eval (module 5)</title>
+		<script type="text/javascript">
+			"use trict";
+			// A l'aide de l'instruction eval dans une boucle, déclarez 10 
+			// variables int_1, int_2, int_3, int_4 etc. auxquelles vous 
+			// affecterez les valeurs 3, 5, 7, 9, etc.
+			for(var i = 1;i <=10;i++){
+				eval('var int_' + i + '=' + (i*2+1) + ';');
+			}
+			// A l'aide de l'instruction eval dans une boucle, affichez les 
+			// valeurs de ces 10 variables dans 10 fenêtres alert successives 
+			// ('3', '5', '7', etc.)
+			for(var i = 1;i <=10;i++){
+				eval('alert(int_' + i + ');');
+			}
+			// A l'aide de l'instruction eval dans une boucle, affichez les 
+			// noms de ces 10 variables dans 10 fenêtres alert successives 
+			// ('int_1', 'int_2', 'int_3', etc.)
+			for(var i = 1;i <=10;i++){
+				eval('alert("int_' + i + '");');
+			}
+			// ATTENTION! DIFFICILE!...
+			// A l'aide de l'instruction eval dans une boucle, affichez les 
+			// noms et valeurs de ces 10 variables dans 10 fenêtres alert successives 
+			// ('int_1=3', 'int_2=5', 'int_3=7', etc.)
+			for(var i = 1;i <=10;i++){
+				eval('alert("int_' + i + ' : " + int_' + i +');');
+			}
+				
+		
+		</script>
+	</head>
+	<body>
+
+
+
+	</body>
+</html>
+

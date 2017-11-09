@@ -1,0 +1,57 @@
+div{
+	position:absolute;
+	text-align:center;
+}
+button,input,td,h1,h2,h3,p{
+	font-family:Arial;
+}
+button.petit{
+	height:40px;
+	width:200px;
+}
+input{
+	font-size:1.2em;
+	text-align:center;
+}
+td{
+	width:180px;
+	height:180px;
+	text-align:center;
+	vertical-align:middle;
+	border-width:1px;
+	border-style:inset;
+}
+td.bouton,td#prenom_res{
+	background-color:#BBD2E1;
+}
+td.bouton{
+	height:140px;
+}
+td#td_radio{
+	width:280px;
+	background-color:#3A8EBA;
+}
+h2,h3{
+	text-align:center;
+}
+h2{
+	font-size:1.5em;
+}
+h3{
+	font-size:1.2em;
+	margin-top:0.3cm;
+}
+p{
+	font-size:1.1em;
+}
+img#pingouin,img#pingouin_rouge,img#pingouin_vert,img#pingouin_jaune{
+	position:absolute;
+	left:700px;
+	visibility:hidden;
+}
+img#pingouin{
+	top:570px;
+}
+img#pingouin_rouge,img#pingouin_vert,img#pingouin_jaune{
+	top:20px;
+}

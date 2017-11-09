@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+  <head>
+
+    <meta charset="utf-8"/>
+    <title>BonbonGit main page</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="icon" type="image/png" href="icon.png" />
+    <script type="text/javascript">
+      /*Cette fonction est appelée par les liens de la liste et enregistre le module qui doit être ouvert dans le iframe lors de l'ouverture de la page "exercices.html"*/
+      function saveMod(mod){
+        localStorage.inLink = mod;
+      }
+    </script>
+  </head>
+  <body>
+    <div>
+      <header>
+        <h1>Welcome</h1>
+      </header>
+
+      <nav>
+        <ul>
+          <li><a href="https://github.com/BonbonGit"> Github projects </a></li>
+          <!--Cette classe et la class "ddmod" sont utilisées dans le css pour afficher la liste déroulante-->
+          <li class="moddroper" >
+            <a href="exercices.html"> Exercices </a>
+            <!--La liste ci-dessous n'est affichée que lorsque l'utilisateur passe la souris sur la class "moddropper"-->
+            <ul class="ddmod">
+              <!--Chaque élément de la liste renvoies son ID à la fonction "saveMod" pour pouvoir mémoriser le module à ouvrir dans la page d'exercices. Il pourrait être plus malin de générer cette liste dynamiquement avec du JS (mais dans mes souvenir le onclick risque de poser problème)-->
+              <li><a id="mod1" onclick="saveMod(this.id)" href="exercices.html"> Module 1 </a></li>
+              <li><a id="mod2" onclick="saveMod(this.id)" href="exercices.html"> Module 2 </a></li>
+              <li><a id="mod3" onclick="saveMod(this.id)" href="exercices.html"> Module 3 </a></li>
+              <li><a id="mod4" onclick="saveMod(this.id)" href="exercices.html"> Module 4 </a></li>
+              <li><a id="mod5" onclick="saveMod(this.id)" href="exercices.html"> Module 5 </a></li>
+              <li><a id="mod6" onclick="saveMod(this.id)" href="exercices.html"> Module 6 </a></li>
+              <li><a id="mod7" onclick="saveMod(this.id)" href="exercices.html"> Module 7 </a></li>
+            </ul>
+          </li>
+          <li class="right"><a href="http://www.w3schools.com/"> Help </a></li>
+        </ul>
+
+      </nav>
+
+      <article>
+        <p>
+          Up here you can access the list of my GitHub projects (link to my GitHub profile for now). Under the "Execices" tab you can see some of my first exercices on HTML, CSS and JS I did during my last year in high school. The "Help" link will guide you to W3Schools website where you can find a bunch of useful documentation and tutorials on web technologies.
+        </p>
+      </article>
+
+      <footer>
+        <h4> Original page by Bonbon! </h4>
+      </footer>
+    </div>
+  </body>
+</html>

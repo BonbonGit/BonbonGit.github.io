@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>exo 16 du module 9</title>
+		
+		<script type="text/javascript">
+		
+			//initialisation de la balise <canvas>
+		
+			var ctx,canvas;
+			var width,height;
+			
+			// Cette fonction initialise la balise <canvas>
+			// et affecte une valeur adéquate aux variables
+			// width et height
+
+
+			function initialiser_canvas(){ 
+				canvas=document.getElementById('canvasID');
+				ctx=canvas.getContext('2d');
+				width=parseInt(canvas.width);
+				height=parseInt(canvas.height);
+			}
+			
+			//définition et initialisation des variables globales
+			// (ne pas modifier cette partie)
+			var oiseau = {
+				//variables gérant la position de l'oiseau
+				//(centre du corps)
+			
+				pos_x : 700,
+				pos_y : 170,
+				dPos_x : 1,
+			
+				//variables gérant l'inclinaison de l'aile
+			
+				angle : 0,
+				dAngle : 0.04,
+				sens : 1,
+			
+				//variables gérant la taille de l'oiseau
+			
+				rayon_corps : 50,
+				rayon_tete : 35,
+				rayon_oeil : 3,
+				base_bec : 33,
+				base_aile : 80,
+			
+				//variables gérant la couleur de l'oiseau
+			
+				couleur_corps : '',
+				couleur_tete : '',
+				
+				
+				initialiser_variables : function(){
+					this.couleur_corps = calculCouleur();
+					this.couleur_tete = calculCouleur();
+					this.pos_x = 700;
+					this.angle = 0;
+				},
+				
+				dessinerOiseau : function(){
+					dessinerCercle(this.rayon_corps,this.couleur_corps);
+				
+					ctx.save();
+						ctx.rotate(this.angle);
+						dessinerTriangle(this.base_aile,'yellow');
+					ctx.restore();
+				
+					ctx.save();
+						ctx.translate(-this.rayon_corps,-this.rayon_corps);
+						dessinerCercle(this.rayon_tete,this.couleur_tete);
+						dessinerCercle(this.rayon_oeil,'black');
+					
+						ctx.translate(-this.rayon_tete-this.base_bec,0);
+						dessinerTriangle(this.base_bec,'orange');
+					
+					ctx.restore();
+				},
+				
+				dessiner : function(){
+					effacer();
+					ctx.save();
+						ctx.translate(this.pos_x,this.pos_y);
+						this.dessinerOiseau();
+					ctx.restore();
+				
+					this.pos_x -= this.dPos_x;
+					if(this.angle <= -Math.PI/4){
+						this.sens = 1;
+					} else if(this.angle >= Math.PI/4){
+						this.sens = -1;
+					}
+					this.angle += this.sens*this.dAngle;
+				},
+			}
+			
+			//variables gérant l'animation
+			//t: objet permettant de gérer l'arrêt de l'animation
+			//dt: intervalle de temps entre deux images successives
+			
+			var t;
+			var dt=30;
+
+			
+			
+			
+			//fonction utilitaire de dessin	
+			
+			//Cette fonction permet d'effacer l'ensemble des pixels de la balise canvas
+						
+			function effacer(){
+				ctx.clearRect(0,0,width,height);
+			}			
+			
+            //fonction gérant les valeurs aléatoires
+            
+            // Cette fonction renvoie une couleur constituant en un mélange de
+            // rouge et de vert et contenant au moins 50% de chacune de
+            // ces couleurs
+            
+			function calculCouleur() {
+				return 'rgb('+(Math.floor(Math.random()*128)+128) + ',' + (Math.floor(Math.random()*128)+128) + ',0)';
+			}
+			
+									
+			//fonctions de dessin
+			
+			// Cette fonction fait apparaître, dans la balise canvas, un cercle 
+			// de rayon r, rempli de la couleur "couleur" et bordé de noir. 
+			// Le centre de ce cercle est situé aux coordonnées (0;0).
+			
+			function dessinerCercle(r,couleur){
+				ctx.beginPath();
+				ctx.arc(0,0,r,0,2*Math.PI,true)
+				ctx.closePath();
+				ctx.stroke();
+				ctx.fillStyle = couleur;
+				ctx.fill();
+			}
+
+			// Cette fonction fait apparaître, dans la balise canvas, un 
+			// triangle de base "base" et de hauteur égale à sa base
+			// (cf schéma du triangle en annexe).
+			// Le triangle rempli de la couleur "couleur" et bordé de noir. 
+			// Le sommet de ce triangle est situé aux coordonnées (0;0).
+			
+			function dessinerTriangle(base,couleur){
+				ctx.beginPath();
+				ctx.moveTo(0,0);
+				ctx.lineTo(base,-base/2);
+				ctx.lineTo(base,+base/2);
+				ctx.closePath();
+				ctx.stroke();
+				ctx.fillStyle = couleur;
+				ctx.fill();
+				
+			}
+			
+			
+			
+			// Cette fonction arrête l'animation et la relance.
+			// rem: On peut arrêter une animation même si elle n'a pas 
+			// commencé...
+			
+			function lancerAnimation(){
+				clearInterval(t);
+				t = setInterval('oiseau.dessiner()',dt);
+			}
+
+			// Cette fonction initialise ou ré-initialise les paramètres qui 
+			// doivent l'être
+			// lorsqu'un nouvel oiseau apparaît à l'écran. 
+			
+			
+			
+			
+			// Cette fonction arrête l'animation.
+						
+			function stop(){
+				clearInterval(t);
+			}
+
+	
+		</script>
+
+	</head>
+
+	
+	<body onload="initialiser_canvas();oiseau.initialiser_variables();lancerAnimation();"> <!-- remplir l'intérieur de la balise-->
+	
+		<div>
+		
+			<canvas id='canvasID' width='800' height='300' style="border:solid 1px">
+			</canvas>
+			
+		</div>
+        <div>
+        	<button onclick="stop();"> Arrêter l'oiseau </button>
+        	<button onclick="lancerAnimation();"> Reprendre le vol </button>
+        	<button onclick="oiseau.initialiser_variables();"> Nouvel oiseau </button>
+				<!-- à remplir -->
+		</div>
+		
+	</body>
+</html>

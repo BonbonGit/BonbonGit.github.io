@@ -1,0 +1,92 @@
+<! DOCTYPE html> 
+<html lang="fr"> 
+	<head> 
+		<meta charset="utf-8">
+		<title>Exercice 2</title>
+		<script type="text/javascript">
+		
+		//déclaration variables
+		var capInit = 0;
+		var taux = 0;
+		var nbAnnee = 1;
+		//Fonction : vérifier si un nombre entré est entier
+		function pasNbEntier(nb){
+			if(isNaN(nb) || nb%1!=0){
+				alert('Veuillez entrer un nombre entier!');
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		//Fonction : arrondi à 0.5
+		function roundCapital(capActu){
+			if(capActu % 0.5 <= 0.25){
+				capActu -= capActu % 0.5;
+			}
+			else{
+				capActu -= (capActu % 0.5) - 0.5;
+			}
+			return capActu;
+		}
+		//Fonction : calcul le 
+		function capitalUneAnnee(capActu){
+			return roundCapital(capActu*(1 + taux/100));
+		}
+		
+		//Fonction : demander les infos pour le placement
+		function demanderInfosPlacement(){
+			var confirmer = false;
+			
+			while(!confirmer){
+				do{
+					capInit = parseFloat(prompt("Entrez le capital initial. \nIl sera automatiquement arrondi aux 5 centimes près. \nSi ce message s'affiche à nouveau c'est que vous n'avez pas introduit un nombre. "));
+				}while(isNaN(capInit))
+				capInit = roundCapital(capInit)
+				do{
+					taux = Math.round(parseFloat(prompt("Entrez le taux d'intérêt.\nIl sera automatiquement arrondi au 0.1% près. \nSi ce message s'affiche à nouveau c'est que vous n'avez pas introduit un nombre. "))*10)/10;
+				}while(isNaN(taux))
+				do{
+					nbAnnee = parseFloat(prompt("Entrez la durée (en années) du placement.\nVous devez entrer un nombre entier d'année, et il doit être supérieur à 1. \nSi ce message s'affiche à nouveau c'est que vous n'avez pas introduit un nombre entier."));
+				}while(pasNbEntier(nbAnnee) || nbAnnee < 1)
+				confirmer = confirm("Est-ce que ces donnée sont bien celles que vous voulez utiliser? \nCapital initial : " + capInit + "\nTaux d'intérêt : " + taux + "\nNombre d'année : " + nbAnnee + "\nAppuyez sur OK pour confirmer. Appuyez sur annuler pour entrer d'autres valeurs.");
+			}
+		}
+		
+		
+		//Function : préparer le résutat
+		function preparerResultat(){
+			var i;
+			var msg = 'Voici le capital pour chaque années :';
+			
+			for(i = 1; i <= nbAnnee; i++){
+				eval('var cap' + i + '= 1;');
+			}
+			cap1 = capInit;
+			for(i = 1; i <= nbAnnee; i++){
+				
+				if(i>1) eval('cap' + i + ' = cap' + (i-1) + ';');
+				eval('cap' + i + ' = capitalUneAnnee(cap' + i +');');
+				msg += '\nCapital pour l\'année n°' + i +' : ' + eval('cap' + i);
+			}
+			
+			return msg;
+		}
+		
+		
+		demanderInfosPlacement();
+		
+		alert(preparerResultat());
+		
+	
+		
+		</script> 
+	</head> 
+	<body>
+	</body>
+</html>
+
+
+
+
+

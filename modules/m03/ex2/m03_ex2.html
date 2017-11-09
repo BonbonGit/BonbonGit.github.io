@@ -1,0 +1,54 @@
+<! DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Exercice 2</title>
+		<script type="text/javascript">
+		
+		//déclaration des variables
+		var nombre1 = 0;
+		var nombre2 = 0;
+		var nombre3 = 0;
+		
+		
+		//demander 3 nombre à l'utilisateur
+		nombre1 = parseFloat(prompt('Donner une valeur au nombre 1'));
+		nombre2 = parseFloat(prompt('Donner une valeur au nombre 2'));
+		nombre3 = parseFloat(prompt('Donner une valeur au nombre 3'));
+		
+		// vérifier chaque possibilité puis indiquer le(s) nombre(s) le(s) plus petit(s)
+		if (nombre1 == nombre2 && nombre1 < nombre3) 
+			alert('Les nombre 1 et 2 sont les plus petits!');
+			
+		else if (nombre1 == nombre3 && nombre1 < nombre2)
+			alert('Les nombre 1 et 3 sont les plus petits!');
+		
+		else if (nombre2 == nombre3 && nombre2 < nombre1)
+			alert('Les nombre 2 et 3 sont les plus petits!');
+			
+		else if (nombre1 < nombre2 && nombre1 < nombre3)
+			alert('Le nombre 1 est le plus petit!');
+			
+		else if (nombre2 < nombre1 && nombre2 < nombre3)
+			alert('Le nombre 2 est le plus petit!');
+		
+		else if (nombre3 < nombre1 && nombre3 < nombre2)
+			alert('Le nombre 3 est le plus petit!');
+			
+		else if(Number.isNaN(nombre1) || Number.isNaN(nombre2))
+			alert('Vous n\'avez pas entré que des nombres!');
+			
+		else
+			alert('Tous les nombres sont égaux!');
+		
+		//fin du test
+		
+		
+		</script>
+		
+	</head>
+	
+	<body>
+	
+	</body>
+</html>

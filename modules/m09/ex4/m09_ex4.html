@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Ex4</title>
+		<script type="text/javascript">
+		//initialisation de la balise canvas
+			var ctx,canvas;
+			var width,height;
+			function initialiser(){ 
+				canvas=document.getElementById('canvasID');
+				ctx=canvas.getContext('2d');
+				width=parseInt(canvas.width);
+				height=parseInt(canvas.height);
+			}
+		//fonction de transformation
+			function changerEchelle(){
+				var x = parseFloat(document.getElementById("scaleX").value);
+				var y = parseFloat(document.getElementById("scaleY").value);
+				ctx.scale(x,y);
+				dessiner();
+			
+			
+			}
+		//fonction de dessin
+			function effacer(){
+				ctx.clearRect(0,0,800,500);
+			
+			}
+
+			function dessiner(){
+				dessinerCarre();
+				dessinerTriangle();
+				dessinerMaison();
+				dessinerCercle();
+				dessinerDisque();
+				dessinerCroix();
+			}
+			function dessinerCarre(){
+				ctx.beginPath();
+				ctx.moveTo(100,100);
+				ctx.lineTo(180,100);
+				ctx.lineTo(180,140);
+				ctx.lineTo(100,140);
+				ctx.closePath();
+				ctx.fillStyle = 'red';
+				ctx.fill();
+				
+			}
+			function dessinerTriangle(){
+				ctx.beginPath();
+				ctx.moveTo(140,200);
+				ctx.lineTo(120,240);
+				ctx.lineTo(160,240);
+				ctx.closePath();
+				ctx.fillStyle = 'blue';
+				ctx.fill();
+				
+			}
+			function dessinerMaison(){
+				ctx.beginPath();
+				ctx.moveTo(140,300);
+				ctx.lineTo(120,340);
+				ctx.lineTo(120,380);
+				ctx.lineTo(160,380);
+				ctx.lineTo(160,340);
+				ctx.closePath();
+				ctx.strokeStyle = 'green';
+				ctx.stroke()
+				
+			}
+			function dessinerCercle(){
+				ctx.beginPath();
+				//ctx.moveTo(300,120);
+				ctx.arc(340,120,40,0,2*Math.PI,true);
+				ctx.closePath();
+				ctx.strokeStyle = 'blue';
+				ctx.stroke();
+			}
+			function dessinerDisque(){
+				ctx.beginPath();
+				//ctx.moveTo(300,120);
+				ctx.arc(340,220,40,3*Math.PI/2,2*Math.PI,true);
+				ctx.lineTo(340,220);
+				ctx.closePath();
+				ctx.fillStyle = 'blue';
+				ctx.fill();
+			}
+			function dessinerCroix(){
+				ctx.beginPath();
+				ctx.moveTo(340,340);
+				ctx.lineTo(320,300);
+				ctx.lineTo(360,300);
+				ctx.lineTo(320,380);
+				ctx.lineTo(360,380);
+				ctx.lineTo(340,340);
+				ctx.lineTo(300,320);
+				ctx.lineTo(300,360);
+				ctx.lineTo(380,320);
+				ctx.lineTo(380,360);
+				ctx.lineTo(340,340);
+				ctx.closePath();
+				ctx.fillStyle = "yellow";
+				ctx.fill();
+				ctx.strokeStyle = 'red';
+				ctx.stroke();
+			}
+		</script>
+	</head>
+	<!--appel desfonctions d'initialisation et de dessin -->
+	<body onload='initialiser();dessiner()'>
+	<!--<div> contenant la balise <canvas> -->
+		<div>
+		<!--balise <canvas> -->
+			<canvas id='canvasID' width='800' height='500'>
+			</canvas>
+		</div>
+		<section>
+			<p>
+				Changement d'échelle	Sur X : <input id="scaleX" type="text"/>
+				Sur Y : <input id="scaleY" type="text"/>
+				<button onclick="changerEchelle();">Appliquer le changement d'échelle</button>
+			</p>
+			<p>
+				<button onclick="effacer();">Effacer</button>
+			</p>
+		</section>
+	</body>
+</html>

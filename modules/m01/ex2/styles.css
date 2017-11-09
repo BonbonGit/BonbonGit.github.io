@@ -1,0 +1,128 @@
+/*styles des articles*/
+
+*{
+/*police de caractère : Verdana,Arial et Sans-serif*/
+	font-family:Verdana, Arial, Sans-serif;
+}
+
+body{
+/*couleur pour toute la page : verte*/
+	background-color:green;
+}
+
+div{
+/*La div doit être centré sur la page;
+la largeur de la div est 800 pixels;
+ajouter un espace avant, après, à gauche et à droite de la div de 10 pixels;
+le fonds de la div est blanc;
+le trait de la div est vers clair (lightgreen).
+*/
+
+	width:800px;
+	margin:auto;
+	padding:10px;
+	background-color:white;
+	border:4px solid lightGreen;
+}
+
+h1{
+/*La taille de la police : 40 pixels;
+la couleur de la police : verte.
+*/
+	font-size:40px;
+	color:green;
+}
+
+h2{
+/*La taille de la police : 25 pixels;
+la couleur de la police : darkblue.
+*/
+	margin-top:0px;
+	font-size:25px;
+	color:darkblue;
+}
+
+h2.article{
+/*
+Le titre de l'article est souligné
+*/
+	text-decoration:underline;
+}
+
+p{
+/*les paragraphes sont justifiés
+*/
+	margin-top:0px;
+	text-align:justify;
+}
+
+.info{
+/*la couleur des informations est en rouge
+*/
+	color:red;
+}
+
+table{
+/*disposez les tableaux au centre de la div
+*/
+	margin-right:auto;
+	margin-left:auto;
+}
+
+td{
+/*le contenu des colonnes est aligné au sommet des colonnes
+L'espace avant, après, à gauche et à droite du contenu de la colonne est de 20 pixels*/
+	vertical-align:top;
+	margin:20px;
+}
+
+td.gauche{
+/*La colonne de gauche a une largeur de 200 pixels
+*/
+	width:200px;
+}
+
+img{
+/*L'image n'a pas de bord
+*/
+	border:0px none white;
+}
+
+.img_petite{
+/*La taille des images est de 200 pixels
+*/
+	width:200px;
+}
+
+.auteur{
+/*Pour l'auteur, la taille de la police est de 14 pixels;
+mettez le texte en gras.
+*/
+	font-size:14px;
+	font-weight:bold;
+}
+
+.date{
+/*Pour la date, la taille de la police est de 12 pixels;
+mettez le texte en italic.
+*/
+	font-size:12px;
+	font-style:italic;
+}
+
+.resume{
+/*la couleur du résumé est grise*/
+	color:grey;
+}
+
+.navigation{
+/*La taille de la police est de 75% de la taille normale
+la couleur de la police est rouge*/
+	font-size:75%;
+	color:red;
+}
+
+.question{
+/*toutes les questions sont en gras*/
+	font-weight:bold;
+}

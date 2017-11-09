@@ -1,0 +1,56 @@
+/*feuille de styles du jeu du pendu*/
+body {
+	background-color: LightGrey;
+}
+*{
+	font-family:Verdana;
+	text-align:center;
+}
+p {
+	font-size:1.5em;
+	color:White; 
+}
+section {
+	margin:auto;
+}
+section#corps {
+	width:800px;
+	border:solid 1px black;
+	padding: 20px;
+	background-color: White;
+}
+header {
+	padding-top:10px;
+	padding-bottom:20px;
+	background-color:Coral;
+}footer {
+	background-color:Grey;
+	padding:20px;	
+}table {
+	border:0px;
+	margin-left:auto;
+	margin-right:auto;
+	width:800px;
+}
+td {
+	height:200px; 
+	vertical-align: middle;
+}
+td#tdMot {
+	width:600px;
+}td#tdPendu {
+	width:200px;
+}.champ {
+	background-color:Coral;
+}
+.btn {
+	font-size:0.75em;
+	font-variant:small-caps;
+	font-weight:bold;
+	text-align:justify;
+	text-tranform:capitalize;
+	text-indent:0px;
+	letter-spacing:2px;
+	color:White;
+	background-color:Coral;
+}

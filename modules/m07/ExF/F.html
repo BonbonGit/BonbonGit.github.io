@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 7 F</title>
+		<link rel="stylesheet" href="style_DEF.css" />
+		<script type="text/javascript" src="fcts_utilitaires.js"></script>
+		<script type="text/javascript">
+		var sourisX;
+		var sourisY;
+		var pingouinX;
+		var pingouinY;
+		function bouge(coord){
+			sourisX = coord.clientX;
+			sourisY = coord.clientY;
+		}
+		function adapterCoord(){
+			pingouinX = sourisX - 50;
+			pingouinY = sourisY - 80;
+			$("pingouin").style.left = pingouinX + 'px';
+			$("pingouin").style.top = pingouinY + 'px';
+			
+		}
+		function bougerPingouin(souris){
+			bouge(souris);
+			adapterCoord();
+		
+		}
+		function controlePingouin(souris){
+			bouge(souris);
+			if(sourisX <= 420 && sourisY <= 550 && sourisX >= 380 && sourisY >= 450){
+				alert('Bravo ! Votre pingouin a réussi son expédition!');
+			} else{
+				alert('Votre pingouin n\'a pas encore atteint le but de son expédition. Essayez encore, vous pouvez y arriver.');
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<img src='images/pingouin_grand.png' id='pingouin' onmousemove="bougerPingouin(event)" onclick="controlePingouin(event)"/>
+		
+		<div style="position:absolute;top:450px;left:380px;height:100px;width:40px;border:2px solid black;z-index:-10;"></div>
+	</body>
+</html>

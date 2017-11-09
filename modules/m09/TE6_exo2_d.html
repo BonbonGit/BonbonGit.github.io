@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>TE 6 (2017): exo 2</title>
+		
+		<script type="text/javascript">
+		
+			//INITIALISATION DE LA BALISE <canvas>
+		
+			var ctx,canvas;
+			var width,height;
+
+			function initialiser_canvas(){ 
+				canvas=document.getElementById('canvasID');
+				ctx=canvas.getContext('2d');
+				width=parseInt(canvas.width);
+				height=parseInt(canvas.height);
+
+			}
+			
+			//DECLARATION ET INITIALISATION DES VARIABLES GLOBALES
+			//(NE PAS MODIFIER CETTE PARTIE!!!)
+			
+			
+			//variables gérant la taille de la fleur
+			
+			var rayon_centre=20;
+			var rayon_petale=50;
+			var distance_centre_petale;
+			
+			//variables gérant la position de la fleur
+			//(coordonnées du centre de la fleur)
+			
+			var pos_x;
+			var pos_y;
+			var dPos_x=1;			
+			
+			//variables gérant la rotation de la fleur
+			
+			var angle=0;
+			var dAngle=Math.PI/50;	
+			
+			//variables gérant l'effeuillage de la fleur
+			
+			var dEffeuillage=2;
+			var effeuillage=false;
+			
+			
+			//variables gérant l'animation
+			//t: objet permettant de gérer l'arrêt de l'animation
+			//dt: intervalle de temps entre deux images successives
+			
+			var t;
+			var dt=30;
+
+			//DECLARATION DES FONCTIONS DE GESTION DES BOUTONS RADIO
+			
+			function $$(n) {
+				return  document.getElementsByName(n);
+			}
+			
+			function determinerValeur(radio_nom){
+				for (var i=0; i<$$(radio_nom).length; i++) {
+					if( $$(radio_nom)[i].checked){
+						
+						// Cette instruction d'une ligne permet de retourner 
+						// la valeur attribuée au bouton coché dans
+						// la série de nom "radio_nom".
+						return $$(radio_nom)[i].value;
+					
+					}
+				}				
+			}
+			
+			//DECLARATION DES FONCTIONS	DE GESTION DU DESSIN
+			
+			//Cette fonction permet d'effacer l'ensemble des pixels de la balise canvas
+						
+			function effacer(){
+				ctx.clearRect(0,0,width,height);
+			}			
+									
+			// Cette fonction fait apparaître, dans la balise canvas, un cercle 
+			// de rayon r, rempli de la couleur c et bordé de noir. 
+			// Le centre de ce cercle est situé aux coordonnées (0;0).
+			
+			function dessinerCercle(r,c){
+				ctx.beginPath();
+				ctx.arc(0,0,r,0,2*Math.PI,true)
+				ctx.closePath();
+				ctx.fillStyle = c;
+				ctx.fill();
+				ctx.stroke();
+			}
+			
+			// Cette fonction permet de dessiner une fleur.
+			// Le centre de la fleur est situé aux coordonnées (0;0).
+
+ 			function dessinerFleur(){
+				dessinerCercle(rayon_centre,determinerValeur('radio_centre'));
+				
+				for(var i = 0; i < 16; i++){
+				
+					ctx.rotate(2*Math.PI/16);
+					
+					ctx.save();
+						ctx.scale(1,0.2)
+						ctx.translate(distance_centre_petale,0);
+						dessinerCercle(rayon_petale,determinerValeur('radio_petale'));
+					ctx.restore();
+					
+				}				
+								
+			}
+			
+			//DECLARATION DES FONCTIONS	DE GESTION DE L'ANIMATION
+
+			// Cette fonction gère l'animation en effectuant les appels de 
+			// fonctions, les changements de référentiels et les incrémentations 
+			// nécessaires des paramètres, en tenant compte de la phase actuelle
+			// de l'animation.
+
+			function dessiner(){
+				effacer();
+				
+				ctx.save();
+					ctx.translate(pos_x,pos_y);
+					ctx.rotate(angle);
+					dessinerFleur();
+				ctx.restore();
+				
+				pos_x += dPos_x;
+				angle += dAngle;
+				
+				if(effeuillage){
+					distance_centre_petale += dEffeuillage;
+				}
+				
+			}
+			
+			// Cette fonction arrête l'animation et la relance.
+			// rem: Il est permis d'arrêter une animation même si elle n'a pas 
+			// commencé...
+			
+			function lancerAnimation(){
+				clearInterval(t);
+				t = setInterval(dessiner,dt);
+			}
+
+			// Cette fonction permet de lancer la phase "effeuillage"
+			// de l'animation.
+			
+			function effeuiller(){
+				effeuillage=true;
+			}
+			
+
+			// Cette fonction initialise les variables au début de l'animation
+			// (pour lancer ou recommencer une nouvelle animation)
+			
+			function initialiser_variables(){
+				distance_centre_petale = rayon_centre + rayon_petale;
+				pos_x = width/8;
+				pos_y = height/2;
+				effeuillage = false;
+			}
+			
+			// Cette fonction arrête définitivement l'animation.
+			//Il faut ensuite recommencer une autre animation (pas de possibilité
+			//de reprendre une animation qui a été arrêtée).
+
+			function stop(){
+				clearInterval(t);
+			}
+
+	
+		</script>
+
+	</head>
+
+	
+	<body onload='initialiser_canvas();'>
+	
+		<div>
+		
+			<canvas id='canvasID' width='800' height='600' style="border:solid 1px">
+			</canvas>
+			
+		</div>
+        <div>
+        	<button onclick="initialiser_variables();lancerAnimation();"><!-- remplir l'intérieur de la balise -->
+        		lancer ou recommencer une nouvelle animation
+        	</button>
+        	<button onclick="stop();">
+        		arrêter l'animation
+        	</button>
+        	<button onclick="effeuiller();">
+        		effeuiller la fleur
+        	</button>
+        	
+        </div>
+		<div>
+			couleur du centre de la fleur:
+			
+			<!-- il faut ajouter un attribut et sa valeur à l'intérieur des six balises d'input ci-dessous -->
+			
+			<input type="radio" name="radio_centre" value="red" />rouge 
+			<input type="radio" name="radio_centre" value="blue" checked="true"/>bleu 
+			<input type="radio" name="radio_centre" value="green" />vert
+		</div>	
+		<div>
+			couleur des pétales:
+			<input type="radio" name="radio_petale" value="red" checked="true"/>rouge 
+			<input type="radio" name="radio_petale" value="blue" />bleu
+			<input type="radio" name="radio_petale" value="green" />vert
+		</div>	
+		
+	</body>
+</html>

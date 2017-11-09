@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>TE 6 (2017): exo 1</title>
+		
+		<script type="text/javascript">
+					
+			//initialisation de la balise <canvas>
+		
+			var ctx,canvas;
+			
+			// Cette fonction initialise la balise <canvas>.
+			//remarque: les variables relatives aux dimensions de la
+			//fenêtre canvas ne sont ni déclarées ni mises en mémoire ici,
+			//exceptionnellement.
+			
+			function initialiserCanvas(){ 
+				canvas=document.getElementById('canvasID');
+				ctx=canvas.getContext('2d');
+			}
+
+			//DECLARATION ET INITIALISATION DES VARIABLES GLOBALES
+			//(NE PAS MODIFIER CETTE PARTIE!!!)
+
+			//La longueur du côté de la fenêtre canvas (qui est carrée) est affectée
+			//à la variable coteCanvas.
+			//Pour le motif de fond dans la fenêtre canvas:
+			//La longueur du côté d'un carré est affectée à la variable coteCarre.
+			//Le nombre de carrés le long d'une ligne (ou dans une colonne) est affectée à
+			//la variable nombreCarres.
+			
+
+			var coteCanvas=600;
+			var coteCarre=0;
+			var nombreCarres=0;
+			
+			//fonctions permettant de déterminer les grandeurs aléatoires
+			
+			//Cette fonction renvoie une couleur déterminée aléatoirement et
+			//qui est adéquate pour un carré (cf donnée).
+			
+			function calculCouleur() {
+				var tRGB = [];
+				
+				for(var i = 0; i < 3; i++){
+					tRGB[i] = Math.floor(Math.random()*256);
+				}
+				
+				//Si par malheur la couleur est noire, on ajoute un peu d'une des trois 
+				//couleur au hasard
+				if(tRGB[0] == 0 && tRGB[1] == 0 && tRGB[2] == 0){
+					tRGB[Math.floor(Math.random()*3)] = 1;
+				}
+				
+				
+				return 'rgb(' + tRGB[0] + ',' + tRGB[1] + ',' + tRGB[2] + ')';
+			
+			}
+
+			//Cette fonction renvoie un rayon déterminé aléatoirement et
+			//qui est adéquat pour un cercle (cf donnée).
+
+			function calculRayon() {
+				return Math.floor(Math.random()*(coteCanvas/6 + 1))
+			}                
+						
+			//déclaration des fonctions de dessin
+			
+			//Cette fonction permet de dessiner un carré de couleur 'couleur' (rempli),
+			//dont le sommet en haut à gauche est positionné aux coordonnées (0;0).
+			//Ses côtés ont des dimensions adéquates (cf donnée).
+			
+			function dessinerCarre(couleur){
+				ctx.fillStyle = couleur;
+				ctx.fillRect(0,0,coteCarre,coteCarre);
+				
+			}
+
+			//Cette fonction permet de dessiner un cercle de couleur noire (rempli),
+			//dont le centre est positionné aux coordonnées (0;0).
+			//La valeur de son rayon est donnée par la valeur de la variable rayon.
+			
+			function dessinerCercle(rayon){
+				ctx.beginPath();
+				ctx.arc(0,0,rayon,0,2*Math.PI,true)
+				ctx.closePath();
+				ctx.fill();
+			}
+
+			//Cette fonction permet de faire apparaître de manière adéquate
+			//les carrés qui remplissent la fenêtre canvas. 
+			
+			function dessinerFondCanvas(){
+			
+				for(var i = 0; i < nombreCarres; i++){
+				
+					for(var j = 0; j < nombreCarres; j++){
+					
+						ctx.save();
+							ctx.translate(j*coteCarre,i*coteCarre);
+							dessinerCarre(calculCouleur());
+						ctx.restore();
+						
+					}
+				}
+			}
+
+			//déclaration des fonctions de gestion de l'ensemble du code
+
+			//Cette fonction affecte les valeurs adéquates aux
+			//variables globales coteCanvas, coteCarre et nombreCarres et
+			//modifie les dimensions de la fenêtre canvas de manière adéquate.
+			//On part du principe que l'utilisateur entre des chaînes de caractères
+			//constituées seulement de chiffres.
+
+			function gestionValeurs(){
+				coteCanvas = parseInt(prompt('largeur et hauteur de la balise (forme carrée)?'));
+				canvas.width = coteCanvas;
+				canvas.height = coteCanvas;
+				nombreCarres = parseInt(prompt('nombre de carrés sur une ligne?'));
+				coteCarre = coteCanvas/nombreCarres;
+			}
+
+			//Cette fonction contient les instructions nécessaires pour faire
+			//apparaître un cercle noir de rayon aléatoire dont la position du centre
+			//correspond à la position où se trouvait la souris lorsque l'utilisateur
+			//a cliqué pour appeler cette fonction.
+
+			function gestionCercle(souris){
+				ctx.save();
+						ctx.translate(souris.clientX,souris.clientY);
+						dessinerCercle(calculRayon());
+				ctx.restore();
+			}
+
+			function init(){
+				initialiserCanvas();
+				gestionValeurs();
+				dessinerFondCanvas();			
+			}
+	
+		</script>
+
+	</head>
+
+	
+	<body onload="init();"                                                  >
+	
+		<div>
+		
+			<canvas id='canvasID' width='600' height='600' style="border: solid 1px" 
+			onclick="gestionCercle(event);"                                              >
+			</canvas>
+			
+		</div>
+
+	</body>
+	
+</html>

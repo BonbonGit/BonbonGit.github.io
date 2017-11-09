@@ -1,0 +1,48 @@
+<! DOCTYPE html> 
+<html lang="fr"> 
+	<head> 
+		<meta charset="utf-8">
+		<title>Exercice 2</title>
+		<script type="text/javascript">
+		
+		//déclaration variables
+		var nbAMult = 0;
+		var N = 0;
+		var msg = '';
+		
+		function pasNbEntier(nb){
+			if(isNaN(nb) || nb%1!=0){
+				alert('Veuillez entrer un nombre entier!');
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		
+		do{
+			nbAMult = parseFloat(prompt('Quel nombre (entier) voulez vous multiplier?'));
+				
+		}while (pasNbEntier(nbAMult))
+		
+		do{
+			N =  parseFloat(prompt('Combien de multiples voulez vous afficher? (Entrez un nombre entier svp)'));
+				
+		}while (pasNbEntier(N))
+		
+		for(cmtN = 1;cmtN <= N; cmtN++){
+ 			msg += nbAMult + ' x ' + cmtN +' = ' + nbAMult*cmtN + '\n';
+		}
+		
+		alert(msg);
+		
+		</script> 
+	</head> 
+	<body>
+	</body>
+</html>
+
+
+
+
+

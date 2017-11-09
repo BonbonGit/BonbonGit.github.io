@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Exercice 15</title>
+		<script type="text/javascript">
+		//initialisation de la balise canvas
+			var ctx,canvas;
+			var width,height;
+			var t;
+			var angOnCircle = 0;
+			var angPac = 0;
+			var dAngPac = 0;
+			
+			function $(id){
+				return document.getElementById(id);
+			}
+			function degToRad(deg){
+				return deg*2*Math.PI/360;
+			}
+			
+			function initialiser(){ 
+				canvas=document.getElementById('canvasID');
+				ctx=canvas.getContext('2d');
+				width=parseInt(canvas.width);
+				height=parseInt(canvas.height);
+				
+			}
+			function effacer(){
+				ctx.clearRect(0,0,width,height);
+			
+			}
+			
+			
+		//fonction de dessin
+			function changerEtat(etat){
+				switch(etat){
+					case 0:
+						dAngPac = 0;
+						break;
+					case 1:
+						dAngPac = -degToRad(0.5);
+						break;
+					case 2:
+						dAngPac = degToRad(5);
+						break;
+				}
+			}
+			
+			function dessiner(){
+				effacer();
+			
+				ctx.save();
+					ctx.translate(300,300);
+					dessinerCercle();
+					ctx.rotate(angOnCircle);
+					ctx.translate(-200,0);
+					ctx.rotate(angPac);
+					dessinerPacman();
+				ctx.restore();
+				
+				angOnCircle += degToRad(0.5);
+				angPac += dAngPac; 
+				
+				if(angOnCircle === 6*Math.PI){ //fonctionne PAS ;-;
+					clearTimeout(t);
+					angOnCircle %= 2*Math.PI;
+					angPac %= 2*Math.PI;
+				} else {
+					t = setTimeout(dessiner,10);
+				}
+			}
+			function dessinerPacman(){
+				
+				ctx.beginPath();
+				ctx.arc(0,0,50,degToRad(20),degToRad(340),false);
+				ctx.lineTo(0,0);
+				ctx.save();
+					ctx.rotate(degToRad(20));
+					ctx.closePath();
+					ctx.fillStyle = 'yellow';
+					ctx.fill();
+					ctx.stroke();
+				ctx.restore();
+				
+				ctx.beginPath();
+				ctx.arc(20,-20,5,0,2*Math.PI,true);
+				ctx.closePath();
+				ctx.fillStyle = 'black';
+				ctx.fill();
+					
+			}
+			function dessinerCercle(){
+				ctx.beginPath();
+				ctx.arc(0,0,200,0,2*Math.PI,true);
+				ctx.closePath();
+				ctx.stroke();
+					
+			}
+		</script>
+	</head>
+	<!--appel desfonctions d'initialisation et de dessin -->
+	<body onload='initialiser();dessiner()'>
+	<!--<div> contenant la balise <canvas> -->
+		<div>
+		<!--balise <canvas> -->
+			<canvas id='canvasID' width='600' height='600'>
+			</canvas>
+		</div>
+		<input id="sync" value="Rotation sychrone" type="button" onclick="changerEtat(0);"/>
+		<input id="noRot" value="Pas de rotation" type="button" onclick="changerEtat(1);"/>
+		<input id="rot" value="Rotation rapide" type="button" onclick="changerEtat(2);"/>
+	</body>
+</html>

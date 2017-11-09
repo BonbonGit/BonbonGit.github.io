@@ -1,0 +1,115 @@
+﻿*{
+	font-family:Arial, Helvetica, sans-serif;
+}
+body{
+	background-image:url("bg2.jpeg");
+	background-position:center top;
+	background-color:darkgrey;
+}
+div{
+	margin-left:auto;
+	margin-right:auto;
+	padding-top:10px;
+	width:800px;
+	
+}
+header{
+	text-align:center;
+	border-top:5px double darkgrey;
+	border-bottom:5px double darkgrey;
+	margin-bottom:40px;
+	border-radius:50px;
+}
+nav{
+	margin-left:auto;
+	margin-right:auto;
+	width:700px;
+	text-align:center;
+}
+p{
+	padding-bottom:10px;
+}
+table{
+	margin:0px auto;
+	width:100%;
+}
+td{
+	padding-bottom:40px;
+}
+iframe{
+	height:300px;
+	width:500px;
+	display:block;
+	border:none;
+	margin-top:20px;
+	margin-left:auto;
+	margin-right:auto;
+}
+a{
+	padding:10px 45px;
+	border-radius:15px;
+	color:darkRed;
+	
+	text-decoration:none;
+	border-bottom:6px solid Grey;
+	border-right:6px solid Grey;
+	border-top:6px solid lightGrey;
+	border-left:6px solid lightGrey;
+	background-color: darkGrey;
+}
+a:visited{
+	color:indigo;
+}
+a:hover{
+	background-color: Silver;
+}
+a#mod1{
+	border-bottom:6px solid #d11aff;
+	border-right:6px solid #d11aff;
+	border-top:6px solid #f0b3ff;
+	border-left:6px solid #f0b3ff;
+	background-color: #e066ff;
+}
+a#mod1:hover{
+	background-color: #e580ff;
+}
+a#mod2{
+	border-bottom:6px solid Green;
+	border-right:6px solid Green;
+	border-top:6px solid limeGreen;
+	border-left:6px solid limeGreen;
+	background-color: #2db92d;
+}
+a#mod2:hover{
+	background-color: lime;
+}
+a#mod3{
+	border-bottom:6px solid SkyBlue;
+	border-right:6px solid SkyBlue;
+	border-top:6px solid powderBlue;
+	border-left:6px solid powderBlue;
+	background-color: #a8dcf0;
+}
+a#mod3:hover{
+	background-color: #bee5f4;
+}
+a#mod4{
+	border-bottom:6px solid OrangeRed;
+	border-right:6px solid OrangeRed;
+	border-top:6px solid #e6ac00;
+	border-left:6px solid #e6ac00;
+	background-color: #ff8c1a;
+}
+a#mod4:hover{
+	background-color: #ffc61a;
+}
+a#mod5{
+	border-bottom:6px solid #0033cc;
+	border-right:6px solid #0033cc;
+	border-top:6px solid #668cff;
+	border-left:6px solid #668cff;
+	background-color: #4d79ff;
+}
+a#mod5:hover{
+	background-color: #99b3ff;
+}

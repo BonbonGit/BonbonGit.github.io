@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Exercice 8</title>
+		<script type="text/javascript">
+		//initialisation de la balise canvas
+			var ctx,canvas;
+			var width,height;
+			var t;
+			var x = 30;
+			var y = 10;
+			
+			function initialiser(){ 
+				canvas=document.getElementById('canvasID');
+				ctx=canvas.getContext('2d');
+				width=parseInt(canvas.width);
+				height=parseInt(canvas.height);
+				alert('ATTENTION Cet exercice fonctionne mais il es complètement faux!!!');
+			}
+			
+			function nbAlea(min,max){
+				return Math.floor(Math.random()*(max-min))+min;
+				
+			}
+			function couleurAlea(){
+				var col = '#';
+				var i;
+				for(i = 0; i < 6; i++){
+				 col += nbAlea(0,16).toString(16);
+				}
+				
+				return col;
+			}
+		//fonction de dessin
+			function dessiner(){
+				ctx.clearRect(0,0,800,500);
+				var couleur = "red";
+				
+				dessinerMaison(x,y,couleur);
+				x += 2;
+				y += 1;
+				
+				t = setTimeout(dessiner,20);
+				
+			}
+			
+
+			function dessinerMaison(x,y,couleur){
+				ctx.beginPath();
+				ctx.moveTo(x,y);
+				ctx.lineTo(x-20,y+40);
+				ctx.lineTo(x-20,y+80);
+				ctx.lineTo(x+20,y+80);
+				ctx.lineTo(x+20,y+40);
+				ctx.closePath();
+				
+				ctx.fillStyle = couleur;
+				ctx.fill();
+				
+			}
+			
+		</script>
+	</head>
+	<!--appel desfonctions d'initialisation et de dessin -->
+	<body onload='initialiser();dessiner()'>
+	<!--<div> contenant la balise <canvas> -->
+		<div>
+		<!--balise <canvas> -->
+			<canvas id='canvasID' width='800' height='500'>
+			</canvas>
+		</div>
+	</body>
+</html>

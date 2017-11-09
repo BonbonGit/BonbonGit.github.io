@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 7 E</title>
+		<link rel="stylesheet" href="style_DEF.css" />
+		<script type="text/javascript" src="fcts_utilitaires.js"></script>
+		<script type="text/javascript">
+		var x=1000;
+		var y=250;
+		var dif = 10;
+		var t;
+		var u;
+		var pingouins = ['pingouin','pingouin_rouge','pingouin_vert','pingouin_jaune']
+		var iVisi = 0;
+		
+		function voyageP(){
+			clearTimeout(u);
+			for(var i = 0;i < 4;i++){
+				if(i == 0)
+					$(pingouins[0]).style.visibility = 'visible';
+				else
+					$(pingouins[i]).style.visibility = 'hidden';
+			}
+			
+			t = setInterval(choixDirection,100);
+			
+		}
+		function stopP(){
+			clearInterval(t);
+			animer();
+		}
+		function animer(){
+			if(iVisi != -1){
+				$(pingouins[iVisi]).style.visibility = 'hidden';
+			} else if(iVisi == -1){
+				$(pingouins[3]).style.visibility = 'hidden';
+			}
+			
+			iVisi++;
+			$(pingouins[iVisi]).style.visibility = 'visible';
+			if(iVisi == 3){iVisi = -1;}
+			u = setTimeout(animer,500);
+		}
+		function choixDirection(){
+			var c = Math.floor(Math.random()*4);
+			switch(c){
+				case 0:
+					pingouinD();
+					break;
+				case 1:
+					pingouinH();
+					break;
+				case 2:
+					pingouinG();
+					break;
+				case 3:
+					pingouinB();
+					break;
+			}
+			
+		}
+		function pingouinD(){
+			x -= dif;
+			for(var i = 0;i < 4;i++){
+				$(pingouins[i]).style.left = x + "px";
+			}
+		}
+		function pingouinH(){
+			y -= dif;
+			for(var i = 0;i < 4;i++){
+				$(pingouins[i]).style.top = y + "px";
+			}
+		}
+		function pingouinG(){
+			x += dif;
+			for(var i = 0;i < 4;i++){
+				$(pingouins[i]).style.left = x + "px";
+			}
+		}
+		function pingouinB(){
+			y += dif;
+			for(var i = 0;i < 4;i++){
+				$(pingouins[i]).style.top = y + "px";
+			}
+		}
+		</script>
+	</head>
+	<body onload="animer()">
+		<img src='images/pingouin_grand.png' id='pingouin'/>
+		<img src='images/pingouin_rouge_grand.png' id='pingouin_rouge'/>
+		<img src='images/pingouin_vert_grand.png' id='pingouin_vert'/>
+		<img src='images/pingouin_jaune_grand.png' id='pingouin_jaune'/>
+		<!-- <button onclick="setInterval(pingouinD,100)">Droite</button>
+		<button onclick="pingouinH()">Haut</button>
+		<button onclick="pingouinG()">Gauche</button>
+		<button onclick="pingouinB()">Bas</button> -->
+		<button onclick="voyageP()">Voyage aléatoire du pingouin</button>
+		<button onclick="stopP()">Arrêt du pingouin</button>
+				
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 7 B</title>
+		<link rel="stylesheet" href="style_A.css" />
+		
+		<script type="text/javascript">
+		function resJeu(){
+			var msg = "<h3>"
+			var rep = Math.floor(Math.random()*3);
+			switch(rep){
+				case 0:
+					msg += "Bravo ! Vous avez gagné !";
+					break;
+				case 1:
+					msg += "Essayez encore ! Vous avez une réponse fausse !";
+					break;
+				case 2:
+					msg += "Révisez vos classiques ! Vous avez plusieurs réponses fausses !";
+					break;
+			}
+			document.getElementById("prenom_res").innerHTML = msg + "</h3>";
+		}
+		</script>
+	</head>
+	<body>
+		<button onclick="resJeu()" >Afficher les résultats du jeu</button>
+		<div id="prenom_res"> &nbsp;</div>
+	</body>
+</html>

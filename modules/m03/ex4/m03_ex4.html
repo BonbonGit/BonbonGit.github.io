@@ -1,0 +1,58 @@
+<! DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Exercice 4</title>
+		<script type="text/javascript">
+		
+		//déclaration des variables
+		var a = 1;
+		var b = 1;
+		var c = 1;
+		var delta = 0;
+		var solution1 = 0;
+		var solution2 = 0;
+		
+		//Explication
+		alert('Ce programme permet de résoudre des équations du 2ème degré sous la forme ax^2+bx+c=0. \n(Seulement si elles ont une ou des solutions réel)');
+		
+		//demander 2 nombre à l'utilisateur
+		a = parseFloat(prompt('Veuillez entrer le coefficient a. (Les coefficients a b et c doivent être non nuls!) \n\nSi un coefficient est nul ou que vous ne lui attribuer pas un nombre réel la valeur par défaut sera 1'));
+		b = parseFloat(prompt('Veuillez entrer le coefficient b. (Les coefficients a b et c doivent être non nuls!) \n\nSi un coefficient est nul ou que vous ne lui attribuer pas un nombre réel la valeur par défaut sera 1'));
+		c = parseFloat(prompt('Veuillez entrer le coefficient c. (Les coefficients a b et c doivent être non nuls!) \n\nSi un coefficient est nul ou que vous ne lui attribuer pas un nombre réel la valeur par défaut sera 1'));
+		
+		// vérification des entrée de l'utilisateur
+		if (a == 0 || Number.isNaN(a) )
+			a = 1;
+		if (b == 0 || Number.isNaN(b) )
+			b = 1;
+		if (c == 0 || Number.isNaN(c) )
+			c = 1;
+			
+		//calcul du delta
+		delta = Math.pow(b,2) - (4*a*c);
+		
+		//Trois possibilités
+		if (delta > 0) {
+			solution1 = (-b + Math.sqrt(delta))/(2*a);
+			solution2 = (-b - Math.sqrt(delta))/(2*a);
+			alert('Il y a deux solution : \nSolution 1 : x = ' + solution1 + '\nSolution 2 : x = ' + solution2);
+		}
+		else if (delta == 0) {
+			solution1 =  (-b)/(2*a);
+			alert('Il y a une seule solution : \nSolution : x = ' + solution1);
+		}
+		else
+			alert('Il n\'y a pas de solution réel!');
+		
+		//fin du test
+		
+		
+		</script>
+		
+	</head>
+	
+	<body>
+	
+	</body>
+</html>

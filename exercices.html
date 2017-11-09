@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+	<head>
+
+		<meta charset="utf-8"/>
+		<title>Page des exercices</title>
+		<link rel="stylesheet" href="exercices.css" />
+		<script type="text/javascript">
+      /*Cette fonction initialise la source du iframe (indique quel page dois s'ouvrir dans le iframe à l'ouverture de cette page) en utilisant le module enregistré précédement dans la page d'index (et en allant chercher le bon liens dans les liens présents sur la page). Puis la fonction supprime l'élément enregistré*/
+			function setIframe(){
+				document.getElementById("iFrame").src = document.getElementById(localStorage.inLink).href;
+				localStorage.removeItem("inLink");
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<header>
+				<h1> Exercices </h1>
+			</header>
+			<nav>
+				<p><a href="index.html"> Retour à la page d'accueil</a></p>
+				<p>Cliquer sur un module pour afficher les exercices.</p>
+				<table>
+					<tr>
+            <!--Chaque lien a pour "target" le iframe de nom "iframeEX". Le "target" dis où le liens doit être ouvert, tous ces liens seront donc ouvert dans mon iframe (par défaut les liens s'ouvre en général dans l'onglet actuel ou parfois dans un nouvel onglet/une nouvelle page). -->
+						<td><a id="mod1" href="modules/m01/module1.html" target="iframeEx"> Module 1</a></td>
+
+						<td><a id="mod2" href="modules/m02/module2.html" target="iframeEx"> Module 2</a></td>
+
+						<td><a id="mod3" href="modules/m03/module3.html" target="iframeEx"> Module 3</a></td>
+
+						<td><a id="mod4" href="modules/m04/module4.html" target="iframeEx"> Module 4</a></td>
+					</tr>
+					<tr>
+						<td><a id="mod5" href="modules/m05/module5.html" target="iframeEx"> Module 5</a></td>
+
+						<td><a id="mod6" href="modules/m06/module6.html" target="iframeEx"> Module 6</a></td>
+
+						<td><a id="mod7" href="modules/m07/module7.html" target="iframeEx"> Module 7</a></td>
+
+						<td><a id="mod9" href="modules/m09/module9.html" target="iframeEx"> Module 9</a></td>
+
+					</tr>
+				</table>
+			</nav>
+			<section>
+        <!--L'élément "<iframe>" est l'élément qui permet d'afficher une page web à l'intérieur d'une autre page web -->
+				<iframe id="iFrame" onload="setIframe()" src="" name="iframeEx"></iframe>
+			</section>
+		</div>
+	</body>
+</html>

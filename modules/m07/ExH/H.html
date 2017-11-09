@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 7 H</title>
+		<link rel="stylesheet" href="style_HI.css" />
+		<script type="text/javascript" src="fcts_utilitaires.js"></script>
+		<script type="text/javascript">
+			function choixNo(){
+				return Math.ceil(Math.random()*7);	
+			}
+			function choixOrdre(){
+				var ordre = Math.ceil(Math.random()*6);
+				switch(ordre){
+					case 1:
+						ordre = [2,3,1,4];
+						break;
+					case 2:
+						ordre = [2,4,3,1];
+						break;
+					case 3:
+						ordre = [3,1,2,4];
+						break;
+					case 4:
+						ordre = [3,1,4,2];
+						break;
+					case 5:
+						ordre = [4,1,3,2];
+						break;
+					case 6:
+						ordre = [4,3,2,1];
+						break;
+					
+				}
+				return ordre;
+			}
+			function changerCouleur(id){
+				$(id.id).style.backgroundColor="#BEBEBE";
+			}
+			function afficheImages(no,ordre){
+				var i;
+				for(i = 0; i < 4; i++){
+					$("1_"+(i+1)).innerHTML = '<img src="images/' + no + '_' + ordre[i] + '.jpg"/>';
+				}
+				
+			}
+			function init(){
+				var no = choixNo();
+				var ordre = choixOrdre();
+				afficheImages(no,ordre);
+			
+			}
+		</script>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td id="1_1" onclick="changerCouleur(this)"></td>
+				<td id="1_2" onclick="changerCouleur(this)"></td>
+			</tr>
+			<tr>
+				<td id="1_3" onclick="changerCouleur(this)"></td>
+				<td id="1_4" onclick="changerCouleur(this)"></td>
+			</tr>
+		</table>
+		<div class="bouton">
+			<button onclick="init()">Afficher les images</button>
+		</div>
+	</body>
+</html>

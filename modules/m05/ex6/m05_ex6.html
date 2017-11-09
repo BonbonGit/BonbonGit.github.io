@@ -1,0 +1,86 @@
+<! DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Exercice 6</title>
+		<script type="text/javascript">
+		"use strict";
+		//déclaration des variables
+		var nbCache = 0;
+		var trouve = false;
+		var nbTour = 1;
+		
+		//Fonction : vérifier si un nombre est entier
+		function pasNbEntier(nb){
+			if(isNaN(nb) || nb%1!=0){
+				alert('Veuillez entrer un nombre entier!');
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		//fonction : demander le nombre d'essais que veut l'utilisateur
+		function nbEssais(){
+			do{
+				nbTour = parseFloat(prompt('Entrez le nombre d\'essais dont vous voulez diposer.\nLe nombre caché sera situé entre 1 et 5 fois le nombre d\'essais que vous avez demander.'));
+			}while(pasNbEntier(nbTour))
+		}
+		//fonction: générer un nombre aléatoire entre 1 et 20
+		function genNbBorne(borne){
+			return Math.ceil(Math.random()*borne);
+		}
+		
+		//fonction: demander un nombre à l'utilisateur
+		function demanderNombre(i){
+		
+			return parseFloat(prompt('Tour N°'+i+'\nEssayer de deviner le nombre caché.\nLe nombre caché sera situé entre 1 et ' + nbTour*5 + '.'));
+			
+		}
+			
+		//fonction: comparer le nombre proposé au nombre caché
+		function resultat(nbPropose){
+			var msg = ' ';
+			if (nbPropose < nbCache) 
+				msg = 'Le nombre caché est plus grand!';
+		
+			else if (nbPropose > nbCache)
+				msg = 'Le nombre caché est plus petit!';
+			
+			else if (pasNbEntier(nbPropose))
+				msg = 'Vous n\'avez pas entré un nombre entier. \nVous avez une chance en moins de trouvez le nombre caché.\nDommage pour vous';
+			
+			else{
+				msg ='Bravo, vous avez trouvé le nombre caché!';
+				trouve = true;
+			}
+			return msg;
+		}
+		//fontion : un tour de jeu
+		function tour(i){
+				var nbPropose = demanderNombre(i);
+		
+				alert(resultat(nbPropose));
+		}
+		
+		function jeu(){
+			nbEssais();
+			nbCache = genNbBorne(nbTour*5);
+			
+			for(var i=1;i<=nbTour;i++){
+				tour(i);
+				if(trouve) i=nbTour+1;
+			}
+			if(!trouve) alert('Désolé, vous avez perdu. :(');
+		}
+		
+		jeu();
+		
+		</script>
+		
+	</head>
+	
+	<body>
+	
+	</body>
+</html>

@@ -1,0 +1,71 @@
+<! DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Exercice 1</title>
+		<script type="text/javascript">
+		
+		//déclaration des variables
+		var nbCache = 0;
+		var nbPropose = 0;
+		var trouve = false;
+		
+		//fonction: générer un nombre aléatoire entre 1 et 20
+		function genNbUnVingt() {
+			return Math.ceil(Math.random()*20);
+		}
+		
+		//fonction: demander un nombre à l'utilisateur
+		function demanderNombre() {
+			return parseInt(prompt('Essayer de deviner le nombre caché (entier entre 1 et 20)'));
+			
+		}
+			
+		//fonction: comparer le nombre proposé au nombre caché
+		function resultat(nbPropose){
+			var msg = ' ';
+			if (nbPropose < nbCache) 
+				msg = 'Le nombre caché est plus grand!';
+		
+			else if (nbPropose > nbCache)
+				msg = 'Le nombre caché est plus petit!';
+			
+			else if (Number.isNaN(nbPropose))
+				msg = 'Vous n\'avez pas entré un nombre entier. \nVous avez une chance en moins de trouvez le nombre caché.\nDommage pour vous';
+			
+			else{
+				msg ='Bravo, vous avez trouvé le nombre caché!';
+				trouve = true;
+			}
+			return msg;
+		}
+		
+		function tour(){
+			if (!trouve){
+				nbPropose = demanderNombre();
+		
+				alert(resultat(nbPropose));
+			}
+			else{}
+		}
+		
+		function jeu(){
+			nbCache = genNbUnVingt();
+		
+			tour();
+		
+			tour();
+		
+			tour();
+		}
+		
+		jeu();
+		
+		</script>
+		
+	</head>
+	
+	<body>
+	
+	</body>
+</html>

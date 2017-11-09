@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+        <meta charset="utf-8"/>
+		<title>TE 3 : exercice 1</title>
+		<script type="text/javascript">
+	
+		//variables globales
+		var joueur1 = '';
+		var joueur2 = '';
+		var resultatJoueur1=0;
+		var resultatJoueur2=0;
+		var nbTour = 1;
+		
+		//fonctions
+		//Fonction : demande le nom des joueurs
+		function nomJoueurs(){
+			joueur1=prompt('Ecrivez le prénom du joueur n°1');
+			joueur2=prompt('Ecrivez le prénom du joueur n°2');
+		}
+		//Fonction : numéro d'une carte
+		function numCarte(){
+			return 5+Math.ceil(Math.random()*9);
+		}
+		//Fonction : numéro de la couleur d'une carte
+		function nbCouleurCarte(){
+			return Math.ceil(Math.random()*4);
+			
+		}
+		//Fonction : couleur de la carte
+		function couleurCarte(nbCouleur){
+			var carteCouleur = '';
+			if (nbCouleur==1) carteCouleur="carreau";
+			else if (nbCouleur==2) carteCouleur="trèfle";
+			else if (nbCouleur==3) carteCouleur="pique";
+			else if (nbCouleur==4) carteCouleur="coeur";
+			
+			return carteCouleur;
+		}
+		//Fonction : comparer cartes
+		function comparerCartes(cVJ1,cCJ1,cVJ2,cCJ2){
+			if(cVJ1!=cVJ2){
+				if(cVJ1>cVJ2){
+					alert(joueur1+" a gagné le tour n°"+nbTour);
+					resultatJoueur1++;
+				}else{
+					alert(joueur2+" a gagné le tour n°"+nbTour);
+					resultatJoueur2++;
+				}
+			}else{
+				if(cCJ1!=cCJ2){
+					if(cCJ1>cCJ2){
+						alert(joueur1+" a gagné le tour n°"+nbTour);
+						resultatJoueur1++;
+					}else{
+						alert(joueur2+" a gagné le tour n°"+nbTour);
+						resultatJoueur2++;
+					}
+				}else{
+					alert("Les deux joueurs ont gagné le tour n°"+nbTour);
+					resultatJoueur1++;
+					resultatJoueur2++;
+				}	
+			}
+			
+		}
+		//Fonction : un tour de jeu
+		function tour(){
+			var carteVJ1 = numCarte();
+			var carteCJ1 = nbCouleurCarte();
+			var carteVJ2 = numCarte();
+			var carteCJ2 = nbCouleurCarte();
+			
+			alert("tour n°"+nbTour+": \n"+joueur1+" a obtenu le "+carteVJ1+" de "+couleurCarte(carteCJ1)+".\n"+joueur2+" a obtenu le "+carteVJ2+" de "+couleurCarte(carteCJ2)+".\n");
+			
+			comparerCartes(carteVJ1,carteCJ1,carteVJ2,carteCJ2);
+		}
+		//Fonction : résultat final
+		function resultFinal(){
+			if(resultatJoueur1 == resultatJoueur2)
+				alert("Les deux joueurs ont gagné la partie!");
+			else if(resultatJoueur1 > resultatJoueur2)
+					alert(joueur1 + " a gagné la partie!");
+			else if(resultatJoueur1 < resultatJoueur2)
+						alert(joueur2 + " a gagné la partie!");
+		}
+		//Programme principal
+		function jouerPartie() {
+			//appel des fonctions
+			nomJoueurs();
+			while(nbTour <= 3){
+				tour();
+				nbTour++;
+			}
+			resultFinal();
+		
+		}
+	
+		//lancer le programme principal
+		jouerPartie();
+		
+		</script>
+	  </head>
+	  <body>
+	
+	  </body>
+</html>

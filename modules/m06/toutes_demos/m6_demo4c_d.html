@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 6 Demo 4c</title>
+		<script type="text/javascript">
+	
+			//FONCTIONS	
+				
+				//trouver un élément (e) dans un tableau (t)
+				function trouverElementTableau(t,e) {
+					var i;
+					
+					for(i = 0; i < t.length; i++){
+						if(t[i]==e)
+							return true;
+					}
+
+				}
+
+		
+			//DECLARATION
+				var tFruits = new Array('Pomme','Orange','Poire','Mandarine','Kiwi','Banane');	
+			
+			//PROGRAMME
+				
+				
+				//récupérez le nom d'un fruit puis testez si ce fruit existe dans le tableau
+				//en utilisant la fonction trouverElementTableau(t,e)
+				//puis affichez un commentaire adapté
+				var e = prompt('Entrez le nom d\'un fruit.');	
+				
+				if(trouverElementTableau(tFruits,e))
+					alert('Le fruit ' + e + ' se trouve dans notre tableau.');
+				else
+					alert('Désolé, le fruit ' + e + ' ne se trouve pas dans le tableau.');
+
+
+
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

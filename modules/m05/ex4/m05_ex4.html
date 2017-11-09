@@ -1,0 +1,43 @@
+<! DOCTYPE html> 
+<html lang="fr"> 
+	<head> 
+		<meta charset="utf-8">
+		<title>Exercice 4</title>
+		<script type="text/javascript">
+		"use strict";
+		//déclaration variables
+		var lgGr = 8;
+		var hrGr = 8;
+		var grille = '';
+		
+		do{
+			lgGr = parseInt(prompt('Entrez le nombre de colones (>1)'));
+			hrGr = parseInt(prompt('Entrez le nombre de lignes (>1)'));
+		}while(isNaN(lgGr) || isNaN(hrGr) || lgGr<1 || hrGr<1)
+		
+		for(var i = hrGr; i >= 1; i--){
+				
+			for(var j = lgGr; j >= 1; j--){
+				if((j+i)%2 == 0){
+					grille += 'X';
+				}else{
+					grille += 'O';
+				}
+				
+			}
+			grille += '\n'
+			
+		}
+		
+		alert('Voici une jolie grille :\n' + grille);
+		
+		</script> 
+	</head> 
+	<body>
+	</body>
+</html>
+
+
+
+
+

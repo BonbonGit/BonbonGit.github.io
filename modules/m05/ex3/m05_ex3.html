@@ -1,0 +1,43 @@
+<! DOCTYPE html> 
+<html lang="fr"> 
+	<head> 
+		<meta charset="utf-8">
+		<title>Exercice 2</title>
+		<script type="text/javascript">
+		"use strict";
+		//déclaration variables
+		var nb = 0;
+		var msg = '';
+		var res = 1;
+		
+		function pasNbEntier(nb){
+			if(isNaN(nb) || nb%1!=0){
+				alert('Veuillez entrer un nombre entier!');
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+		
+		do{
+			nb = parseFloat(prompt('De quel nombre (entier) voulez-vous trouver la factorielle?'));
+				
+		}while (pasNbEntier(nb))
+		
+		for(var i = 1;i <= nb; i++){
+ 			res *= i;
+		}
+		
+		alert('La factorielle de ' + nb + ' donne ' + res + '.');
+		
+		</script> 
+	</head> 
+	<body>
+	</body>
+</html>
+
+
+
+
+

@@ -1,0 +1,134 @@
+/*FEUILLE DE STYLE GOOGLE WAVE*/
+
+* {
+/*pour l'ensemble du document,
+la police de caractère sera courier et
+la taille de la police 14 pixels*/
+font-family:courier;
+font-size:14px;
+
+}
+
+.titrePrincipal {
+/*la police sera verdana
+la taille de 30 pixels
+le texte sera centré
+la couleur de la police sera ligthGrey
+une bordure de 1 pixel noire entourera complètement le texte*/
+font-family:verdana;
+font-size:30px;
+text-align:center;
+color:lightGrey;
+border:1px solid black;
+
+}
+
+h1 {
+/*la police sera helvetica
+la taille de 24 pixels
+la couleuer de la police SteelBlue
+l'espace avant le paragraphe de 18 pixels
+l'espace après le paragraphe de 12 pixels*/
+font-family:helvetica;
+font-size:24px;
+color:steelBlue;
+margin-top:18px;
+margin-bottom:12px;
+
+}
+
+h2 {
+/*la police sera arial
+la taille de 20 pixels
+la couleuer de la police noire
+l'espace avant le paragraphe de 12 pixels
+l'espace après le paragraphe de 6 pixels
+la police sera mise en gras et en italique*/
+font-family:arial;
+font-size:20px;
+margin-top:12px;
+margin-bottom:6px;
+font-style:italic;
+font-weight:bold;
+
+}
+
+p{
+/*le paragraphe est justifié
+l'espace avant le paragraphe de 6 pixels
+l'espace après le paragraphe de 6 pixels*/
+text-align:justify;
+margin-top:6px;
+margin-bottom:6px;
+
+}
+
+a {
+/*la couleur du lien est rouge*/
+color:red;
+}
+
+ol{
+/*la liste numérotée est justifiée*/
+text-align:jutify;
+}
+
+div{
+/*Formatage du bloc qui entoure tout le texte visible :
+mettre les marges de gauche et de droite à auto
+la largeur du bloc est de 720 pixels*/
+margin-right:auto;
+margin-left:auto;
+width:720px;
+
+}
+
+img {
+/*Formatage des images: en bloc ("block"), i.e. pas de texte à côté de l'image
+mettre les marges gauche et droite à auto
+mettre la taille des images à 50% en hauteur et en largeur*/
+display:block;
+margin-right:auto;
+margin-left:auto;
+width:50%;
+height:50%;
+
+}
+
+.imgInText {
+/*Formatage des images: "inline", texte à côté de l'image
+taille des images à 10% en hauteur et largeur
+faire "flotter" l'image à gauche*/
+display:inline;
+height:10%;
+width:10%;
+float:left;
+
+}
+
+.auteur {
+/*aligner l'auteur à droite
+et mettre le texte en italique*/
+text-align:right;
+font-style:italic;
+
+
+}
+
+.plus{
+/*certains éléments de texte apparaissent en gras et en bleu dans le texte, 
+et les lettres sont espacées de 2 pixels*/
+font-weight:bold;
+color:blue;
+letter-spacing:2px;
+
+}
+
+.flash{
+/*deux éléments de texte ont
+une couleur de police blanche sur
+un fond rouge*/
+color:white;
+background-color:red;
+
+}

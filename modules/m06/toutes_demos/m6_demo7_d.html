@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 6 Demo 7 : M&eacute;thodes shift(), pop() et splice()</title>
+		<script>
+			"use strict";
+			//FONCTIONS
+				function afficherNomDisponible(t) {
+				//Cette fonction reçoit en entrée un tableau de noms (t)
+				//Cette fonction retourne la liste des noms présents dans le tableau,
+				//cette liste de noms doit être préparée pour l'affichage dans une alert()
+					var listeNom = '';
+					var i = 0;
+					for(i = 0; i < t.length; i++){
+						listeNom += t[i] + '\n';
+						
+					}
+					return listeNom;
+
+				}
+			
+				function chercherNom(n,t) {
+				//Cette fonction reçoit en entrée un nom saisi par l'utilisateur et un tableau de noms (t)
+				//Cette fonction recherche si le nom saisi existe dans le tableau
+				//Si le nom existe, cette fonction retourne l'indice où se trouve l'élément
+				//Sinon, cette fonction retourne -1
+					var i;
+					for(i = 0; i < t.length; i++){
+						if(n == t[i])
+							return i;
+					}
+					return -1;
+				}
+			
+			
+			
+			//VARIABLES GLOBALES
+				var tNoms = ['ADAM','ADELIE','ANJA','AURELIE','BENJAMIN','BERTRAND','BORIS','BRIAN','BRICE','CAMILLE'];
+				var nomSaisi = '';
+				var indiceElement = 0;
+				var nomRetire = '';
+			
+			
+			
+			//PROGRAMME PRINCIPAL
+				//tant que le tableau n'est pas vide et 
+				//que l'élément saisi n'est pas égal à -1 alors supprimer un élément du tableau
+				//l'élément est saisi par l'utilisateur en fonction de la liste des noms disponibles...
+				while(tNoms.length != 0 && nomSaisi != '-1'){
+			
+					nomSaisi = prompt('Saisissez le nom à supprimer parmi le liste ci-dessous ou -1 pour finir le programme :\n' + afficherNomDisponible(tNoms));
+					switch(chercherNom(nomSaisi,tNoms)){
+						case 0:
+							nomRetire = tNoms.shift();
+							break;
+						case tNoms.length-1:
+							nomRetire = tNoms.pop();
+							break;	
+						case -1:
+							nomRetire = false
+							break;
+						default:
+							nomRetire = tNoms.splice(chercherNom(nomSaisi,tNoms),1);
+							break;
+					}
+					if(nomRetire)
+						alert('Le nom ' + nomRetire + ' a été supprimé !');
+					else
+						alert('Le nom ne se trouve pas dans le tableau (faites attention aux majuscules)');
+				}
+		
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

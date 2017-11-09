@@ -1,0 +1,40 @@
+<! DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Exercice 1</title>
+		<script type="text/javascript">
+		
+		//déclaration des variables
+		var nombre1 = 0;
+		var nombre2 = 0;
+		
+		
+		//demander 2 nombre à l'utilisateur
+		nombre1 = parseFloat(prompt('Donner une valeur au nombre 1'));
+		nombre2 = parseFloat(prompt('Donner une valeur au nombre 2'));
+		
+		//Comparer nombre1 et nombre2
+		if(nombre1 > nombre2)
+			alert('Le nombre 1 est plus grand que le nombre 2!');
+		
+		else if(nombre2 > nombre1) 
+			alert('Le nombre 2 est plus grand que le nombre 1!');
+		
+		else if(Number.isNaN(nombre1) || Number.isNaN(nombre2))
+			alert('Vous n\'avez pas entré que des nombres!');
+		
+		else
+			alert('Le nombre 1 est égal au nombre 2!');
+		
+		//fin du test
+		
+		
+		</script>
+		
+	</head>
+	
+	<body>
+	
+	</body>
+</html>

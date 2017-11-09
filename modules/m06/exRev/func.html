@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>exercice 1 du TE 3 du 7 décembre 2012</title>
+		<script type="text/javascript">
+		
+			// nombre de points: 15.5 pts
+		
+			// But de l'exercice: 
+			//écrire le code de diverses fonctions en respectant les demandes en commentaires. 
+			//Vous êtes bien sûr autorisé à tester vos fonctions selon votre génie propre. 
+			//Cependant, le code final doit être "nettoyé" et donc ne doit contenir que les définitions de fonctions.
+			
+			// VEILLEZ A INDENTER VOTRE CODE DE MANIERE CORRECTE!!!
+			
+			//a) Ecrire le code d'une fonction définie avec trois paramètres formels 
+			//qui retourne les trois paramètres écrits à la suite dans une string (variable de type texte). 
+			//Les paramètres peuvent être des strings et/ou des nombres. 
+			//Par exemple, si on introduit les valeurs 'L', 30 et 6 dans l'appel de la fonction, 
+			//la fonction retourne la valeur 'L306';
+			//si l'on introduit les valeurs 5, 1 et 'cadeaux', la fonction retourne la valeur '51cadeaux'. 
+			function concatTrois(m1,m2,m3){
+				var msg = '';
+				
+				return msg += m1 + '' + m2 + '' + m3;
+
+
+
+
+			}
+
+			alert(concatTrois(6,54,9));
+			//b) Ecrire le code d'une fonction qui prend un tableau de nombres en paramètre 
+			//et affiche le nombre de valeurs paires dans ce tableau dans une fenêtre alert. 
+			//Par exemple, si l'on introduit le tableau [6,9,1,23,45,6,2,7,0], 
+			//la fenêtre alert affiche: "Ce tableau contient 4 valeurs paires". 
+			function nbPairs(t){
+				var pairs = 0;
+				var i;
+				
+				for(i = 0; i < t.length; i++){
+					if(t[i]%2 == 0)
+						pairs++;
+				}
+				alert("Ce tableau contient " + pairs + " valeurs paires");
+
+
+			}
+			nbPairs([0,5,46,3,41,6,72]);
+
+			
+			/*c) Ecrire le code d'une fonction qui prend deux valeurs en paramètre, 
+			demande à l'utilisateur d'introduire, via des fenêtres prompt, 
+			cinq nombres situés entre ces deux valeurs (bornes comprises; 
+			ne pas oublier d'inverser les valeurs entrées en paramètre si la première est supérieure à la deuxième 
+			et de vérifier que l'utilisateur introduit bien des nombres ayant les caractéristiques demandées; 
+			sinon, lui renvoyer la fenêtre prompt pour qu'il introduise un nouveau nombre!). 
+			Faire apparaître ces cinq nombres les uns sous les autres dans une fenêtre alert. 
+			Par exemple, si l'on introduit les valeurs 15 et 4 en paramètre dans la fonction et 
+			que l'utilisateur propose les nombres 6, 15, 10, 7 et 8, la fenêtre alert affiche:
+			6
+			15
+			10
+			7
+			8
+			*/
+			
+			function nombreBorne(nb1,nb2){
+				var invNb = 0;
+				var tNb = [];
+				var msg = '';
+				var i;
+				
+				if(nb1 > nb2){
+					invNb = nb2;
+					nb2 = nb1;
+					nb1 = invNb;
+					
+				}
+				for(i = 0; i < 5; i++){
+					do{
+						tNb[i] = parseInt(prompt('Entrez le nombre n°' + (i+1) + ' situés entre ' + nb1 + ' et ' + nb2 + '.'));
+				
+					}while(isNaN(tNb[i]) || tNb[i] < nb1 || tNb[i] > nb2 )
+					msg += tNb[i] + '\n';
+				}
+				
+				alert(msg);
+
+
+
+			}
+			nombreBorne(4,19);
+		</script>
+	</head>
+	<body>
+
+
+
+	</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Exercice 14</title>
+		<script type="text/javascript">
+		//initialisation de la balise canvas
+			var ctx,canvas;
+			var width,height;
+			var t;
+			var x = 100;
+			var angle = 0;
+			
+			function init(){
+				for(i = 0; i < 3; i++){
+					document.getElementsByName("radio_noms")[i].onclick = controleNom_radio;
+				}
+			}
+			var controleNom_radio = function(){
+				var i;
+				var msg;
+				for(i = 0; i < 3; i++){
+					if(document.getElementsByName("radio_noms")[i].checked){
+						dessinerCarre(document.getElementsByName("radio_noms")[i].value);
+						break;
+					}
+				}
+				
+			}
+			
+			function initialiser(){ 
+				canvas=document.getElementById('canvasID');
+				ctx=canvas.getContext('2d');
+				width=parseInt(canvas.width);
+				height=parseInt(canvas.height);
+			}
+			
+			function nbAlea(min,max){
+				return Math.floor(Math.random()*(max-min))+min;
+				
+			}
+			function couleurAlea(){
+				var col = '#';
+				var i;
+				for(i = 0; i < 6; i++){
+				 col += nbAlea(0,16).toString(16);
+				}
+				
+				return col;
+			}
+			
+		//fonction de dessin
+			
+			function dessinerCarre(color){
+				ctx.beginPath();
+				ctx.rect(100,100,100,100);
+				ctx.closePath();
+				ctx.fillStyle = color;
+				ctx.fill();
+				
+			}
+		</script>
+	</head>
+	<!--appel desfonctions d'initialisation et de dessin -->
+	<body onload='initialiser();init()'>
+	<!--<div> contenant la balise <canvas> -->
+		<div>
+		<!--balise <canvas> -->
+			<canvas id='canvasID' width='800' height='300'>
+			</canvas>
+		</div>
+		<input type="radio" name="radio_noms" value="red"/>Rouge <br/>
+		<input type="radio"	name="radio_noms" value="green"/>Vert<br/>
+		<input type="radio"	name="radio_noms" value="blue"/>Bleu<br/>
+	</body>
+</html>

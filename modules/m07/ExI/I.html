@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 7 I</title>
+		<link rel="stylesheet" href="style_HI.css" />
+		<script type="text/javascript" src="fcts_utilitaires.js"></script>
+		<script type="text/javascript">
+			var selelction = 0;
+			function memoriser(cell){
+				selection = cell.id.slice(2);
+				$(cell.id).innerHTML = selection;
+			}
+			
+		</script>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td id="1_1" onclick="memoriser(this)">&nbsp;</td>
+				<td id="1_2" onclick="memoriser(this)">&nbsp;</td>
+			</tr>
+			<tr>
+				<td id="1_3" onclick="memoriser(this)">&nbsp;</td>
+				<td id="1_4" onclick="memoriser(this)">&nbsp;</td>
+			</tr>
+		</table>
+	</body>
+</html>

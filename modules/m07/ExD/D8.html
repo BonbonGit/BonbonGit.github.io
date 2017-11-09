@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Module 7 D</title>
+		<link rel="stylesheet" href="style_DEF.css" />
+		<script type="text/javascript" src="fcts_utilitaires"></script>
+		<script type="text/javascript">
+		var x = 100;
+		var y = 50;
+		var xR = 100;
+		var yR = 50;
+		var dif = 10;
+		var width = 10;
+		var widthR = 10;
+		function pingouinX(direction){
+			
+			if($("pingouin").style.visibility == 'visible'){
+				(direction.innerHTML == "Droite")? x+=dif:x-=dif;
+				$("pingouin").style.left = x + "px";
+			} else if(document.getElementById("pingouin_rouge").style.visibility == 'visible'){
+				(direction.innerHTML == "Droite")? xR+=dif:xR-=dif;
+				$("pingouin_rouge").style.left = xR + "px";
+			}
+		}
+		function pingouinY(direction){
+			
+			if($("pingouin").style.visibility == 'visible'){
+				(direction.innerHTML == "Haut")? y-=dif:y+=dif;
+				$("pingouin").style.top = y + "px";
+			} else if($("pingouin_rouge").style.visibility == 'visible'){
+				(direction.innerHTML == "Haut")? yR-=dif:yR+=dif;
+				$("pingouin_rouge").style.top = yR + "px";
+			}
+		}
+		
+		function pingouinZoom(zoom){
+			
+			if($("pingouin").style.visibility == 'visible'){
+				(zoom.innerHTML == "+")? width+=5:width-=5;
+				$("pingouin").style.width = width + "%";
+			} else if($("pingouin_rouge").style.visibility == 'visible'){
+				(zoom.innerHTML == "+")? widthR+=5:widthR-=5;
+				$("pingouin_rouge").style.width = widthR + "%";
+			}
+		}
+		function changerPingouin(){
+			var visiP = $("pingouin").style;
+			var visiPR = $("pingouin_rouge").style;
+			if(visiP.visibility == "visible"){
+				visiP.visibility = "hidden";
+				visiPR.visibility = "visible";
+			} else if(visiP.visibility == "hidden"){
+				visiPR.visibility = "hidden";
+				visiP.visibility = "visible";
+			}
+			
+		}
+		</script>
+	</head>
+	<body>
+		<img style="visibility:visible;" src='images/pingouin_grand.png' id='pingouin'/>
+		<img style="visibility:hidden;" src='images/pingouin_rouge_grand.png' id='pingouin_rouge'/>
+		<button onclick="pingouinX(this)">Droite</button>
+		<button onclick="pingouinY(this)">Haut</button>
+		<button onclick="pingouinX(this)">Gauche</button>
+		<button onclick="pingouinY(this)">Bas</button>
+		<button onclick="pingouinZoom(this)">+</button>
+		<button onclick="pingouinZoom(this)">-</button>
+		<button onclick="changerPingouin()">Changer de pingouin</button>
+	</body>
+</html>

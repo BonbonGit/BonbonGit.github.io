@@ -1,0 +1,41 @@
+<! DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Mon Premier script</title>
+		<script type="text/javascript">
+		
+		//déclaration des variables
+		var vitesse= 0;
+		var msg= 'Message de la police : \n';
+		
+		//demander la vitesse à l'utilisateur
+		vitesse = parseInt(prompt('A quelle vitesse roulez-vous ?(donnez une valeur en km/h, sans indiquer l’unité svp)'));
+		
+		if(vitesse> 50) {
+		
+			//message de prévention
+			msg+= '\nVous roulez trop vite ! \nVeuillez réduire votre vitesse à 50 km/hsvp.\n';
+		} 
+		//fin du if
+		
+		else {
+		
+			//message de félicitations
+			msg += '\nBravo ! \nVous respectez la vitesse autorisée ! \n';
+		} 
+		//fin du test
+		
+		//message de salutations
+		msg+= '\nBonne Route ! Votre police.';
+		//affichage du message
+		alert(msg);
+		 
+		</script>
+		
+	</head>
+	
+	<body>
+	
+	</body>
+</html>

@@ -1,0 +1,67 @@
+*{
+	font-family:verdana;
+}
+body{
+	background-color:lightgray;
+}
+header, footer{
+	background-color:green;
+	color:white;
+	margin:20px;
+}
+header{
+	padding:0px;
+}
+footer{
+	text-align:center;
+	padding:20px;
+}
+section#page{
+	background-color:white;
+	width:800px;
+	border:1px solid black;
+	margin:auto;
+}
+section#jeu{
+	background-color:gray;
+	padding:0px;
+	margin:20px;
+}
+table{
+	width:760px;
+}
+td{
+	width:190px;
+	text-align: center;
+	background-color:white;
+}
+table.panierT, td.panier {
+	border:0px;
+}
+table.panierT{
+	width:160px;
+	margin:auto;
+}
+td.panier {
+	width:80px;
+}
+td#de {
+	vertical-align:top;
+}
+h1,h2{
+	text-align:center;
+}
+h1{
+	font-family:arial;
+	font-size:16px;
+	padding:20px;
+}
+h2{
+	font-size:12px;
+	padding:5px;
+}
+img{
+	border-width:0px;
+	width:40px;
+	height:40px;
+}

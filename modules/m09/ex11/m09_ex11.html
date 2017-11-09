@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Exercice 9</title>
+		<script type="text/javascript">
+		//initialisation de la balise canvas
+			var ctx,canvas;
+			var width,height;
+			var t;
+			var pale=30;
+			var angle = [];
+			var x = [];
+			var y = [];
+			var tColorG1 = [];
+			var tColorG2 = [];
+			var tColorM = [];
+			
+			function initialiser(){ 
+				canvas=document.getElementById('canvasID');
+				ctx=canvas.getContext('2d');
+				width=parseInt(canvas.width);
+				height=parseInt(canvas.height);
+				choisirCouleurs();
+				choisirPosInit();
+			}
+			
+			function nbAlea(min,max){
+				return Math.floor(Math.random()*(max-min))+min;
+				
+			}
+			function couleurAlea(){
+				var col = '#';
+				var i;
+				for(i = 0; i < 6; i++){
+				 col += nbAlea(0,16).toString(16);
+				}
+				
+				return col;
+			}
+			function choisirPosInit(){
+				var i;
+				for(i = 0; i < 3; i++){
+					x[i] = nbAlea(0,100);
+					y[i] = nbAlea(0,100);
+					angle[i] = nbAlea(0,2*Math.PI);
+				}
+				y.sort();
+
+			}
+			
+			function choisirCouleurs(){
+				var i;
+				for(i = 0; i < 3; i++){
+					tColorG1[i] = couleurAlea();
+					tColorG2[i] = couleurAlea();
+					tColorM[i] = couleurAlea();
+				}
+				
+			}
+		//fonction de dessin
+			function dessiner(){
+				ctx.clearRect(0,0,800,500);
+				ctx.save();
+				
+				
+				for(var i = 0; i < 3; i++){
+					ctx.translate(x[i],y[i]);
+					dessinerMaison(tColorM[i]);
+					
+					ctx.rotate(angle[i]);
+					dessinerGirouette(tColorG1[i],tColorG2[i]);
+					ctx.restore();
+					ctx.save();
+				}
+				
+				ctx.restore();
+				
+				for(var i = 0; i < 3; i++){
+					angle[i] += 0.05;
+					x[i] += 2;
+					y[i] += 1;
+					
+				}
+				
+				
+				
+				t = setTimeout(dessiner,50);
+				
+			}
+			
+			function dessinerGirouette(colorG1,colorG2){
+				ctx.beginPath();
+				ctx.moveTo(-(pale/2),-pale);
+				ctx.lineTo((pale/2),pale);
+				ctx.lineTo(-(pale/2),pale);
+				ctx.lineTo((pale/2),-pale);
+				ctx.lineTo(-(pale/2),-pale);
+				ctx.moveTo(-pale,-(pale/2));
+				ctx.lineTo(pale,(pale/2));
+				ctx.lineTo(pale,-(pale/2));
+				ctx.lineTo(-pale,(pale/2));
+				ctx.closePath();
+				ctx.fillStyle = colorG1;
+				ctx.fill();
+				ctx.strokeStyle = colorG2;
+				ctx.stroke();
+			}
+			function dessinerMaison(colorM){
+				ctx.beginPath();
+				ctx.moveTo(0,0);
+				ctx.lineTo(-20,40);
+				ctx.lineTo(-20,80);
+				ctx.lineTo(20,80);
+				ctx.lineTo(20,40);
+				ctx.closePath();
+				ctx.fillStyle = colorM;
+				ctx.fill();
+				
+			}
+		</script>
+	</head>
+	<!--appel desfonctions d'initialisation et de dessin -->
+	<body onload='initialiser();dessiner()'>
+	<!--<div> contenant la balise <canvas> -->
+		<div>
+		<!--balise <canvas> -->
+			<canvas id='canvasID' width='800' height='500'>
+			</canvas>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<! DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Lol button</title>
+		<script type="text/javascript">
+			"use strict";
+			//Déclaration des variables 
+			var cCount = 0;
+			//Déclaration des Fonctions
+			function annoy(){
+				cCount++;
+				var l = Math.ceil(Math.random()*(window.innerWidth-80));
+				var h = Math.ceil(Math.random()*(window.innerHeight-30));
+				document.getElementById("annoyer").style.left = l+"px";
+				document.getElementById("annoyer").style.top = h+"px";
+				document.getElementById("cmt").innerHTML = cCount;
+			}
+			function annoy2(event){
+				var l = event.clientX;
+				var h = event.clientY;
+				document.getElementById("annoyer2").style.left = l+"px";
+				document.getElementById("annoyer2").style.top = h+"px";
+			}
+			
+		</script>
+		<style>
+			button{
+				color:white;
+				background-color:blue;
+				border:2px solid blue;
+				position:fixed;
+				height:30px;
+				width:80px;
+			}
+			button#annoyer{
+				bottom:0;
+			}
+			button:hover{
+				background-color: steelBlue;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<button type="button" id="annoyer" onclick="annoy()">Click me!</button>
+		<button type="button" id="annoyer2" onmousehover="annoy2(envent)">Click me!</button>
+		<p>Compteur : <span id="cmt">compteur</span></p>
+	</body>
+</html>

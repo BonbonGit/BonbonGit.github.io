@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Exercice 9</title>
+		<script type="text/javascript">
+		//initialisation de la balise canvas
+			var ctx,canvas;
+			var width,height;
+			var t;
+			var pale=30;
+			var tOrdreMoulin = [];
+			
+			function initialiser(){ 
+				canvas=document.getElementById('canvasID');
+				ctx=canvas.getContext('2d');
+				width=parseInt(canvas.width);
+				height=parseInt(canvas.height);
+				
+			}
+			function lancerAnim(){
+				clearInterval(t);
+				t = setInterval('dessinerTout()',50);
+			}
+			
+			function nbAlea(min,max){
+				return Math.floor(Math.random()*(max-min))+min;
+				
+			}
+			function couleurAlea(){
+				var col = '#';
+				var i;
+				for(i = 0; i < 6; i++){
+				 col += nbAlea(0,16).toString(16);
+				}
+				
+				return col;
+			}
+			function trierMoulins(){
+			
+				tOrdreMoulin = [moulin1,moulin2,moulin3];
+				tOrdreMoulin.sort(function(a,b){
+					return a.pos_y-b.pos_y;
+				});
+			}
+		
+		//fonction de dessin
+			function dessinerTout(){
+				ctx.clearRect(0,0,800,500);
+				trierMoulins();
+				
+				var i;
+				for(i = 0; i < 3; i++){
+					tOrdreMoulin[i].dessiner();
+				}
+				for(i = 0; i < 3; i++){
+					tOrdreMoulin[i].majPos();
+				}
+				
+			}
+			
+			function dessinerGirouette(colorG1,colorG2){
+				ctx.beginPath();
+				ctx.moveTo(-(pale/2),-pale);
+				ctx.lineTo((pale/2),pale);
+				ctx.lineTo(-(pale/2),pale);
+				ctx.lineTo((pale/2),-pale);
+				ctx.lineTo(-(pale/2),-pale);
+				ctx.moveTo(-pale,-(pale/2));
+				ctx.lineTo(pale,(pale/2));
+				ctx.lineTo(pale,-(pale/2));
+				ctx.lineTo(-pale,(pale/2));
+				ctx.closePath();
+				ctx.fillStyle = colorG1;
+				ctx.fill();
+				ctx.strokeStyle = colorG2;
+				ctx.stroke();
+			}
+			
+			function dessinerMaison(colorM){
+				ctx.beginPath();
+				ctx.moveTo(0,0);
+				ctx.lineTo(-20,40);
+				ctx.lineTo(-20,80);
+				ctx.lineTo(20,80);
+				ctx.lineTo(20,40);
+				ctx.closePath();
+				ctx.fillStyle = colorM;
+				ctx.fill();
+				
+			}
+			
+			var moulin1 = {
+				pos_x : nbAlea(pale,pale+100),
+				dx : nbAlea(2,35)/10,
+				pos_y : nbAlea(pale,pale+100),
+				dy : nbAlea(2,35)/10,
+				angle : nbAlea(0,2*Math.PI),
+				dAng : nbAlea(2,15)/100,
+				
+				colorM : couleurAlea(),
+				colorG1 : couleurAlea(),
+				colorG2 : couleurAlea(),
+				
+				dessiner : function(){
+					ctx.save();
+						ctx.translate(this.pos_x,this.pos_y);
+						dessinerMaison(this.colorM);
+					
+						ctx.rotate(this.angle);
+						dessinerGirouette(this.colorG1,this.colorG2);
+					ctx.restore();
+					
+				},
+				majPos : function(){
+					if(this.pos_x > width-pale || this.pos_x < pale){
+						this.dx = -this.dx;
+					} 
+					if(this.pos_y > height-80 || this.pos_y < pale){
+						this.dy = -this.dy;
+					} 
+					this.angle += this.dAng;
+					this.pos_x += this.dx;
+					this.pos_y += this.dy;
+				},
+				
+			
+			}
+			
+			var moulin2 = {
+				pos_x : nbAlea(pale,pale+100),
+				dx : nbAlea(2,35)/10,
+				pos_y : nbAlea(pale,pale+100),
+				dy : nbAlea(2,35)/10,
+				angle : nbAlea(0,2*Math.PI),
+				dAng : nbAlea(2,15)/100,
+				
+				colorM : couleurAlea(),
+				colorG1 : couleurAlea(),
+				colorG2 : couleurAlea(),
+				
+				dessiner : function(){
+					ctx.save();
+						ctx.translate(this.pos_x,this.pos_y);
+						dessinerMaison(this.colorM);
+					
+						ctx.rotate(this.angle);
+						dessinerGirouette(this.colorG1,this.colorG2);
+					ctx.restore();
+					
+				},
+				majPos : function(){
+					if(this.pos_x > width-pale || this.pos_x < pale){
+						this.dx = -this.dx;
+					} 
+					if(this.pos_y > height-80 || this.pos_y < pale){
+						this.dy = -this.dy;
+					} 
+					this.angle += this.dAng;
+					this.pos_x += this.dx;
+					this.pos_y += this.dy;
+				},
+			
+			}
+			
+			var moulin3 = {
+				pos_x : nbAlea(pale,pale+100),
+				dx : nbAlea(2,35)/10,
+				pos_y : nbAlea(pale,pale+100),
+				dy : nbAlea(2,35)/10,
+				angle : nbAlea(0,2*Math.PI),
+				dAng : nbAlea(2,15)/100,
+				
+				colorM : couleurAlea(),
+				colorG1 : couleurAlea(),
+				colorG2 : couleurAlea(),
+				
+				dessiner : function(){
+					ctx.save();
+						ctx.translate(this.pos_x,this.pos_y);
+						dessinerMaison(this.colorM);
+					
+						ctx.rotate(this.angle);
+						dessinerGirouette(this.colorG1,this.colorG2);
+					ctx.restore();
+					
+				},
+				majPos : function(){
+					if(this.pos_x > width-pale || this.pos_x < pale){
+						this.dx = -this.dx;
+					} 
+					if(this.pos_y > height-80 || this.pos_y < pale){
+						this.dy = -this.dy;
+					} 
+					this.angle += this.dAng;
+					this.pos_x += this.dx;
+					this.pos_y += this.dy;
+				},
+			
+			}
+			
+		
+		</script>
+	</head>
+	<!--appel desfonctions d'initialisation et de dessin -->
+	<body onload='initialiser();lancerAnim()'>
+	<!--<div> contenant la balise <canvas> -->
+		<div>
+		<!--balise <canvas> -->
+			<canvas id='canvasID' width='800' height='500'>
+			</canvas>
+		</div>
+	</body>
+</html>
