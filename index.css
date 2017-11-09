@@ -52,7 +52,10 @@ li.right{
 li a:hover{
 	background-color:darkRed;
 }
-
+.moddroper{
+  position: relative;
+  display: inline-block;
+}
 ul.ddmod{
 	display:none; /*permet de laisser les éléments "ul.ddmod" cachés par défaut*/
 	position:absolute; /*permet de s'assurer que les autres éléments ne soient pas déplacés lorsque "ul.ddmod" change de propriété pour "display:block;" */
@@ -66,7 +69,6 @@ ul.ddmod{
 
 /* ce selecteur dis: "lorsque 'moddroper' et survolé avec la souris les élément 'ul.ddmod' ont la propriété 'display:block;'", ce qui a pour effet d'affiché la liste de module cachées jusque la*/
 .moddroper:hover ul.ddmod{
-  position: relative;
 	display:block;
 }
 ul.ddmod li{
