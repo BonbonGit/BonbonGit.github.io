@@ -24,10 +24,16 @@ nav{
 	padding:9px 0;
 }
 article{
+  display:inline-block;
 	padding:10px 30px;
 	width:500px;
 	text-align: justify;
 	clear:right;
+}
+aside{
+  display:inline-block;
+	padding:10px 30px;
+  width:200px;
 }
 ul{
 	list-style:none;
